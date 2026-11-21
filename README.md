@@ -1,5 +1,5 @@
 # BIFMA TRADERS
-
+this is dummy line to elaborate the concept of commits
 Run from the project folder:
 
 ```sh
