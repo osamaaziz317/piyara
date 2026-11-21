@@ -1,3 +1,0 @@
-# Build tooling only. The application itself has no third-party dependencies.
-# Verified against https://pyinstaller.org/en/stable/index.html on 2026-10-02.
-PyInstaller==6.22.3
