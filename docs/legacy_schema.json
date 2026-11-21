@@ -1,0 +1,4660 @@
+{
+  "format_version": 1,
+  "source": {
+    "name": "BT-270926.EXE",
+    "size_bytes": 7299072,
+    "sha256": "d2cd806aa644320cf6d2eaa6192e7d6c840adcde8226f62b5ad1422980cc7e9e",
+    "export_version": "V10.02.01"
+  },
+  "summary": {
+    "tables": 30,
+    "defaults": 25,
+    "views": 6,
+    "functions": 24,
+    "indexes": 0,
+    "sequences": 0,
+    "columns": 302,
+    "primary_keys": 27,
+    "unique_constraints": 23,
+    "foreign_keys": 79
+  },
+  "tables": [
+    {
+      "name": "BDDTL",
+      "offset": 3027,
+      "sql": "CREATE TABLE \"BDDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"VNO\" NUMBER NOT NULL ENABLE, \"LINE_NUM\" NUMBER NOT NULL ENABLE, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"QTY_LARGE_UOM\" NUMBER NOT NULL ENABLE, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"QTY\" NUMBER NOT NULL ENABLE, \"RATE\" NUMBER NOT NULL ENABLE, \"DIS_PER\" NUMBER, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "LINE_NUM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "RATE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DIS_PER",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "VNO"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "BDMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BDMST",
+      "offset": 10459,
+      "sql": "CREATE TABLE \"BDMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"TRNNO\" NUMBER NOT NULL ENABLE, \"TRNDATE\" DATE NOT NULL ENABLE, \"TRN_TYPE\" NUMBER(2, 0) NOT NULL ENABLE, \"BILLNO\" VARCHAR2(20), \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"CUSTOMER\" VARCHAR2(150), \"CUS_MOBILE\" VARCHAR2(11), \"FREIGHT\" NUMBER, \"LABOUR\" NUMBER, \"DISCOUNT\" NUMBER, \"REMARKS\" VARCHAR2(150), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "TRN_TYPE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "BILLNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "CUSTOMER",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CUS_MOBILE",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "FREIGHT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "LABOUR",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "DISCOUNT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "REMARKS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "TRNNO",
+          "CMP_ID",
+          "TRN_TYPE"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRN_TYPE"
+          ],
+          "references_table": "ENTRY_TYPE",
+          "references_columns": [
+            "TYPE_CODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BRDTL",
+      "offset": 18421,
+      "sql": "CREATE TABLE \"BRDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"VNO\" NUMBER NOT NULL ENABLE, \"LINE_NUM\" NUMBER NOT NULL ENABLE, \"VNO_SDTL\" NUMBER, \"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"QTY_LARGE_UOM\" NUMBER NOT NULL ENABLE, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"QTY\" NUMBER NOT NULL ENABLE, \"RATE\" NUMBER NOT NULL ENABLE, \"DIS_PER\" NUMBER, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 262144 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "LINE_NUM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO_SDTL",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "RATE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DIS_PER",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "VNO"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "BRMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "VNO_SDTL"
+          ],
+          "references_table": "SDTL",
+          "references_columns": [
+            "VNO"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BRMST",
+      "offset": 270516,
+      "sql": "CREATE TABLE \"BRMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"TRNNO\" NUMBER NOT NULL ENABLE, \"TRNDATE\" DATE NOT NULL ENABLE, \"TRN_TYPE\" NUMBER(2, 0) NOT NULL ENABLE, \"BILLNO\" VARCHAR2(20), \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"CUSTOMER\" VARCHAR2(150), \"CUS_MOBILE\" VARCHAR2(11), \"FREIGHT\" NUMBER, \"BREAKAGE\" NUMBER, \"P_BAL_P\" CHAR(1), \"REMARKS\" VARCHAR2(150), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "TRN_TYPE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "BILLNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "CUSTOMER",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CUS_MOBILE",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "FREIGHT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "BREAKAGE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "P_BAL_P",
+          "oracle_type": "CHAR(1)",
+          "nullable": true
+        },
+        {
+          "name": "REMARKS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "TRNNO",
+          "CMP_ID",
+          "TRN_TYPE"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRN_TYPE"
+          ],
+          "references_table": "ENTRY_TYPE",
+          "references_columns": [
+            "TYPE_CODE"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CHART",
+      "offset": 326352,
+      "sql": "CREATE TABLE \"CHART\" (\"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"CHDESC\" VARCHAR2(50) NOT NULL ENABLE, \"CHDESC_URDU\" VARCHAR2(50), \"FK_CCODE\" NUMBER, \"ALLOWED\" NUMBER(1, 0), \"CHLEVEL\" NUMBER(1, 0), \"ACCTYPE\" CHAR(1), \"ADDRESS\" VARCHAR2(80), \"PHNO\" VARCHAR2(20), \"MOBILE\" VARCHAR2(11), \"EMAIL\" VARCHAR2(80), \"STAX_NUM\" VARCHAR2(18), \"NTN_NUM\" VARCHAR2(18), \"WEBSITE\" VARCHAR2(80), \"DIS_PER\" NUMBER)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "CHDESC",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "CHDESC_URDU",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "FK_CCODE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "ALLOWED",
+          "oracle_type": "NUMBER(1, 0)",
+          "nullable": true
+        },
+        {
+          "name": "CHLEVEL",
+          "oracle_type": "NUMBER(1, 0)",
+          "nullable": true
+        },
+        {
+          "name": "ACCTYPE",
+          "oracle_type": "CHAR(1)",
+          "nullable": true
+        },
+        {
+          "name": "ADDRESS",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "PHNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "MOBILE",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "EMAIL",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "STAX_NUM",
+          "oracle_type": "VARCHAR2(18)",
+          "nullable": true
+        },
+        {
+          "name": "NTN_NUM",
+          "oracle_type": "VARCHAR2(18)",
+          "nullable": true
+        },
+        {
+          "name": "WEBSITE",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "DIS_PER",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "CHCODE"
+      ],
+      "unique_constraints": [
+        [
+          "CHDESC",
+          "FK_CCODE"
+        ],
+        [
+          "CHDESC_URDU",
+          "FK_CCODE"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "FK_CCODE"
+          ],
+          "references_table": "CITY",
+          "references_columns": [
+            "PK_CCODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CITY",
+      "offset": 390113,
+      "sql": "CREATE TABLE \"CITY\" (\"PK_CCODE\" NUMBER(5, 0) NOT NULL ENABLE, \"CNAME\" VARCHAR2(80) NOT NULL ENABLE, \"CNAME_URDU\" VARCHAR2(80))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "PK_CCODE",
+          "oracle_type": "NUMBER(5, 0)",
+          "nullable": false
+        },
+        {
+          "name": "CNAME",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": false
+        },
+        {
+          "name": "CNAME_URDU",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "PK_CCODE"
+      ],
+      "unique_constraints": [
+        [
+          "CNAME"
+        ],
+        [
+          "CNAME_URDU"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "CMP_LOGIN_ALW",
+      "offset": 394844,
+      "sql": "CREATE TABLE \"CMP_LOGIN_ALW\" (\"USER_ID\" NUMBER(4, 0) NOT NULL ENABLE, \"CMP_ID\" NUMBER(4, 0) NOT NULL ENABLE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "USER_ID",
+          "oracle_type": "NUMBER(4, 0)",
+          "nullable": false
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER(4, 0)",
+          "nullable": false
+        }
+      ],
+      "primary_key": [],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "USER_ID"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CONFIG",
+      "offset": 396102,
+      "sql": "CREATE TABLE \"CONFIG\" (\"CMP_ID\" NUMBER(5, 0) NOT NULL ENABLE, \"CMPNAME\" VARCHAR2(50) NOT NULL ENABLE, \"CMPNAME_URDU\" VARCHAR2(50), \"CMPADDRESS\" VARCHAR2(100), \"CMPADDRESS_URDU\" VARCHAR2(100), \"SDATE\" DATE NOT NULL ENABLE, \"EDATE\" DATE NOT NULL ENABLE, \"CHCODE_CASH\" VARCHAR2(8) NOT NULL ENABLE, \"GST_NUM\" VARCHAR2(18), \"NTN_NUM\" VARCHAR2(18), \"PH_NUM\" VARCHAR2(15), \"FAX_NUM\" VARCHAR2(15), \"WEB\" VARCHAR2(20), \"EMAIL\" VARCHAR2(30), \"CNAME_2\" VARCHAR2(50), \"ADDRESS_2\" VARCHAR2(200), \"ALIAS\" VARCHAR2(10), \"SMSMASK\" VARCHAR2(11), \"SMSUSER\" VARCHAR2(11), \"APIPSW\" VARCHAR2(11), \"APIKEY\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER(5, 0)",
+          "nullable": false
+        },
+        {
+          "name": "CMPNAME",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "CMPNAME_URDU",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "CMPADDRESS",
+          "oracle_type": "VARCHAR2(100)",
+          "nullable": true
+        },
+        {
+          "name": "CMPADDRESS_URDU",
+          "oracle_type": "VARCHAR2(100)",
+          "nullable": true
+        },
+        {
+          "name": "SDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "EDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "CHCODE_CASH",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "GST_NUM",
+          "oracle_type": "VARCHAR2(18)",
+          "nullable": true
+        },
+        {
+          "name": "NTN_NUM",
+          "oracle_type": "VARCHAR2(18)",
+          "nullable": true
+        },
+        {
+          "name": "PH_NUM",
+          "oracle_type": "VARCHAR2(15)",
+          "nullable": true
+        },
+        {
+          "name": "FAX_NUM",
+          "oracle_type": "VARCHAR2(15)",
+          "nullable": true
+        },
+        {
+          "name": "WEB",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "EMAIL",
+          "oracle_type": "VARCHAR2(30)",
+          "nullable": true
+        },
+        {
+          "name": "CNAME_2",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "ADDRESS_2",
+          "oracle_type": "VARCHAR2(200)",
+          "nullable": true
+        },
+        {
+          "name": "ALIAS",
+          "oracle_type": "VARCHAR2(10)",
+          "nullable": true
+        },
+        {
+          "name": "SMSMASK",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "SMSUSER",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "APIPSW",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "APIKEY",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "CMP_ID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "CHCODE_CASH"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DCDTL",
+      "offset": 405967,
+      "sql": "CREATE TABLE \"DCDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"VNO\" NUMBER NOT NULL ENABLE, \"LINE_NUM\" NUMBER NOT NULL ENABLE, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"QTY_LARGE_UOM\" NUMBER NOT NULL ENABLE, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"QTY\" NUMBER NOT NULL ENABLE, \"RATE\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 786432 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "LINE_NUM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "RATE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "VNO"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "DCMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DCMST",
+      "offset": 412228,
+      "sql": "CREATE TABLE \"DCMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"DCNO\" NUMBER NOT NULL ENABLE, \"DCDATE\" DATE NOT NULL ENABLE, \"MANUALNO\" VARCHAR2(20), \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"REMARKS\" VARCHAR2(150), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DCNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DCDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "MANUALNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "REMARKS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "DCNO",
+          "CMP_ID"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ENTRY_TYPE",
+      "offset": 417451,
+      "sql": "CREATE TABLE \"ENTRY_TYPE\" (\"TYPE_CODE\" NUMBER(2, 0) NOT NULL ENABLE, \"TYPE_DESC\" VARCHAR2(10), \"DESCRIPTION\" VARCHAR2(80))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TYPE_CODE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "TYPE_DESC",
+          "oracle_type": "VARCHAR2(10)",
+          "nullable": true
+        },
+        {
+          "name": "DESCRIPTION",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TYPE_CODE"
+      ],
+      "unique_constraints": [
+        [
+          "TYPE_DESC"
+        ],
+        [
+          "DESCRIPTION"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "JDTL",
+      "offset": 420320,
+      "sql": "CREATE TABLE \"JDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"DTL_ID\" NUMBER NOT NULL ENABLE, \"SR\" NUMBER NOT NULL ENABLE, \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"NARRATION\" VARCHAR2(600), \"DR\" NUMBER, \"CR\" NUMBER, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 2097152 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DTL_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "SR",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "NARRATION",
+          "oracle_type": "VARCHAR2(600)",
+          "nullable": true
+        },
+        {
+          "name": "DR",
+          "oracle_type": "NUMBER",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "CR",
+          "oracle_type": "NUMBER",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "DTL_ID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "JMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "JMST",
+      "offset": 1979156,
+      "sql": "CREATE TABLE \"JMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"TRNNO\" NUMBER NOT NULL ENABLE, \"VTYPE\" NUMBER(2, 0) NOT NULL ENABLE, \"TRNDATE\" DATE NOT NULL ENABLE, \"CANCEL\" VARCHAR2(1), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VTYPE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "TRNDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "CANCEL",
+          "oracle_type": "VARCHAR2(1)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "TRNNO",
+          "VTYPE",
+          "CMP_ID"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "VTYPE"
+          ],
+          "references_table": "ENTRY_TYPE",
+          "references_columns": [
+            "TYPE_CODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LOCATION",
+      "offset": 2081530,
+      "sql": "CREATE TABLE \"LOCATION\" (\"LOC\" VARCHAR2(100), \"MODULE\" CHAR(1))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "LOC",
+          "oracle_type": "VARCHAR2(100)",
+          "nullable": true
+        },
+        {
+          "name": "MODULE",
+          "oracle_type": "CHAR(1)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [],
+      "unique_constraints": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "OPEN_STOCK",
+      "offset": 2082938,
+      "sql": "CREATE TABLE \"OPEN_STOCK\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"ICODE\" VARCHAR2(7), \"QTY_LARGE_UOM\" NUMBER NOT NULL ENABLE, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"OPEN_QTY\" NUMBER NOT NULL ENABLE, \"OPEN_RATE\" NUMBER, \"OPEN_DATE\" DATE NOT NULL ENABLE, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": true
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "OPEN_QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "OPEN_RATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "OPEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDTL",
+      "offset": 2188807,
+      "sql": "CREATE TABLE \"PDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"VNO\" NUMBER NOT NULL ENABLE, \"VNO_SDTL\" NUMBER, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"LINE_NUM\" NUMBER NOT NULL ENABLE, \"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"QTY_LARGE_UOM\" NUMBER, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"QTY\" NUMBER NOT NULL ENABLE, \"RATE\" NUMBER NOT NULL ENABLE, \"DIS_PER\" NUMBER, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 262144 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO_SDTL",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "LINE_NUM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "RATE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DIS_PER",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "VNO"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "PMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PMST",
+      "offset": 2205975,
+      "sql": "CREATE TABLE \"PMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"TRNNO\" NUMBER NOT NULL ENABLE, \"TRNDATE\" DATE NOT NULL ENABLE, \"TRN_TYPE\" NUMBER(2, 0) NOT NULL ENABLE, \"GST_RATE\" NUMBER, \"BILLNO\" VARCHAR2(20), \"P_TYPE\" CHAR(1) NOT NULL ENABLE, \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"CUSTOMER\" VARCHAR2(150), \"CUS_MOBILE\" VARCHAR2(11), \"DISCOUNT\" NUMBER, \"BREAKAGE\" NUMBER, \"FREIGHT\" NUMBER, \"REMARKS\" VARCHAR2(150), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "TRN_TYPE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "GST_RATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "BILLNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "P_TYPE",
+          "oracle_type": "CHAR(1)",
+          "nullable": false,
+          "default": "'R'"
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "CUSTOMER",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CUS_MOBILE",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "DISCOUNT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "BREAKAGE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "FREIGHT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "REMARKS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "TRNNO",
+          "CMP_ID",
+          "TRN_TYPE",
+          "P_TYPE"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRN_TYPE"
+          ],
+          "references_table": "ENTRY_TYPE",
+          "references_columns": [
+            "TYPE_CODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUR_ITEM",
+      "offset": 2226398,
+      "sql": "CREATE TABLE \"PUR_ITEM\" (\"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"INAME\" VARCHAR2(60) NOT NULL ENABLE, \"INAME_URDU\" VARCHAR2(60), \"UOM_ID_LARGE\" NUMBER NOT NULL ENABLE, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"SALE_RATE_LARGE\" NUMBER, \"SALE_RATE\" NUMBER, \"LPUR_RATE\" NUMBER, \"LPUR_CHCODE\" VARCHAR2(8), \"SUB_CODE\" NUMBER NOT NULL ENABLE, \"PUR_CODE\" VARCHAR2(8) NOT NULL ENABLE, \"EXP_CODE\" VARCHAR2(8) NOT NULL ENABLE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 720896 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "INAME",
+          "oracle_type": "VARCHAR2(60)",
+          "nullable": false
+        },
+        {
+          "name": "INAME_URDU",
+          "oracle_type": "VARCHAR2(60)",
+          "nullable": true
+        },
+        {
+          "name": "UOM_ID_LARGE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "SALE_RATE_LARGE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "SALE_RATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "LPUR_RATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "LPUR_CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": true
+        },
+        {
+          "name": "SUB_CODE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "PUR_CODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "EXP_CODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        }
+      ],
+      "primary_key": [
+        "ICODE"
+      ],
+      "unique_constraints": [
+        [
+          "INAME"
+        ],
+        [
+          "INAME_URDU"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_LARGE"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUR_ITEM_GROUP_DTL",
+      "offset": 2865908,
+      "sql": "CREATE TABLE \"PUR_ITEM_GROUP_DTL\" (\"MAIN_CODE\" NUMBER NOT NULL ENABLE, \"SUB_CODE\" NUMBER NOT NULL ENABLE, \"SUB_DESC\" VARCHAR2(50) NOT NULL ENABLE, \"SUB_DESC_URDU\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "MAIN_CODE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "SUB_CODE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "SUB_DESC",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "SUB_DESC_URDU",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "SUB_CODE"
+      ],
+      "unique_constraints": [
+        [
+          "SUB_DESC"
+        ],
+        [
+          "SUB_DESC_URDU"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "MAIN_CODE"
+          ],
+          "references_table": "PUR_ITEM_GROUP_MST",
+          "references_columns": [
+            "MAIN_CODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUR_ITEM_GROUP_MST",
+      "offset": 2869984,
+      "sql": "CREATE TABLE \"PUR_ITEM_GROUP_MST\" (\"MAIN_CODE\" NUMBER(2, 0) NOT NULL ENABLE, \"MAIN_DESC\" VARCHAR2(60) NOT NULL ENABLE, \"MAIN_DESC_URDU\" VARCHAR2(60))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "MAIN_CODE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "MAIN_DESC",
+          "oracle_type": "VARCHAR2(60)",
+          "nullable": false
+        },
+        {
+          "name": "MAIN_DESC_URDU",
+          "oracle_type": "VARCHAR2(60)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "MAIN_CODE"
+      ],
+      "unique_constraints": [
+        [
+          "MAIN_DESC"
+        ],
+        [
+          "MAIN_DESC_URDU"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "SDTL",
+      "offset": 2872685,
+      "sql": "CREATE TABLE \"SDTL\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"VNO\" NUMBER NOT NULL ENABLE, \"LINE_NUM\" NUMBER NOT NULL ENABLE, \"VNO_PDTL\" NUMBER, \"VNO_DCDTL\" NUMBER, \"STORE_ID\" NUMBER NOT NULL ENABLE, \"ICODE\" VARCHAR2(7) NOT NULL ENABLE, \"QTY_LARGE_UOM\" NUMBER, \"UOM_ID_SMALL\" NUMBER NOT NULL ENABLE, \"QTY_SMALL_UOM\" NUMBER NOT NULL ENABLE, \"QTY\" NUMBER NOT NULL ENABLE, \"RATE\" NUMBER NOT NULL ENABLE, \"DIS_PER\" NUMBER, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 4194304 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "LINE_NUM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "VNO_PDTL",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "VNO_DCDTL",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "ICODE",
+          "oracle_type": "VARCHAR2(7)",
+          "nullable": false
+        },
+        {
+          "name": "QTY_LARGE_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "UOM_ID_SMALL",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY_SMALL_UOM",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "QTY",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "RATE",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "DIS_PER",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "VNO"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "UOM_ID_SMALL"
+          ],
+          "references_table": "UOM",
+          "references_columns": [
+            "UOM_ID"
+          ]
+        },
+        {
+          "columns": [
+            "VNO_DCDTL"
+          ],
+          "references_table": "DCDTL",
+          "references_columns": [
+            "VNO"
+          ]
+        },
+        {
+          "columns": [
+            "VNO_PDTL"
+          ],
+          "references_table": "PDTL",
+          "references_columns": [
+            "VNO"
+          ]
+        },
+        {
+          "columns": [
+            "ICODE"
+          ],
+          "references_table": "PUR_ITEM",
+          "references_columns": [
+            "ICODE"
+          ]
+        },
+        {
+          "columns": [
+            "TRNID"
+          ],
+          "references_table": "SMST",
+          "references_columns": [
+            "TRNID"
+          ]
+        },
+        {
+          "columns": [
+            "STORE_ID"
+          ],
+          "references_table": "STORE_LOC",
+          "references_columns": [
+            "STORE_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SMST",
+      "offset": 6863437,
+      "sql": "CREATE TABLE \"SMST\" (\"TRNID\" NUMBER NOT NULL ENABLE, \"TRNNO\" NUMBER NOT NULL ENABLE, \"TRNDATE\" DATE NOT NULL ENABLE, \"TRN_TYPE\" NUMBER(2, 0) NOT NULL ENABLE, \"BILLNO\" VARCHAR2(20), \"S_TYPE\" CHAR(1) NOT NULL ENABLE, \"CHCODE\" VARCHAR2(8) NOT NULL ENABLE, \"CUSTOMER\" VARCHAR2(150), \"CUS_MOBILE\" VARCHAR2(11), \"BREAKAGE\" NUMBER, \"FREIGHT\" NUMBER, \"LABOUR\" NUMBER, \"DISCOUNT\" NUMBER, \"P_BAL_P\" CHAR(1), \"REMARKS\" VARCHAR2(150), \"CMP_ID\" NUMBER NOT NULL ENABLE, \"E_USER\" NUMBER NOT NULL ENABLE, \"GEN_DATE\" DATE NOT NULL ENABLE, \"E_USER_UPDATE\" NUMBER, \"GEN_DATE_UPDATE\" DATE, \"AMOUNT_RCV\" NUMBER)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 327680 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "TRNID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNNO",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "TRNDATE",
+          "oracle_type": "DATE",
+          "nullable": false
+        },
+        {
+          "name": "TRN_TYPE",
+          "oracle_type": "NUMBER(2, 0)",
+          "nullable": false
+        },
+        {
+          "name": "BILLNO",
+          "oracle_type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "S_TYPE",
+          "oracle_type": "CHAR(1)",
+          "nullable": false,
+          "default": "'R'"
+        },
+        {
+          "name": "CHCODE",
+          "oracle_type": "VARCHAR2(8)",
+          "nullable": false
+        },
+        {
+          "name": "CUSTOMER",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CUS_MOBILE",
+          "oracle_type": "VARCHAR2(11)",
+          "nullable": true
+        },
+        {
+          "name": "BREAKAGE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "FREIGHT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "LABOUR",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "DISCOUNT",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "P_BAL_P",
+          "oracle_type": "CHAR(1)",
+          "nullable": true
+        },
+        {
+          "name": "REMARKS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "E_USER",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "GEN_DATE",
+          "oracle_type": "DATE",
+          "nullable": false,
+          "default": "SYSDATE"
+        },
+        {
+          "name": "E_USER_UPDATE",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        },
+        {
+          "name": "GEN_DATE_UPDATE",
+          "oracle_type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "AMOUNT_RCV",
+          "oracle_type": "NUMBER",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "TRNID"
+      ],
+      "unique_constraints": [
+        [
+          "TRNNO",
+          "CMP_ID",
+          "TRN_TYPE",
+          "S_TYPE"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "E_USER"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "E_USER_UPDATE"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        },
+        {
+          "columns": [
+            "CHCODE"
+          ],
+          "references_table": "CHART",
+          "references_columns": [
+            "CHCODE"
+          ]
+        },
+        {
+          "columns": [
+            "CMP_ID"
+          ],
+          "references_table": "CONFIG",
+          "references_columns": [
+            "CMP_ID"
+          ]
+        },
+        {
+          "columns": [
+            "TRN_TYPE"
+          ],
+          "references_table": "ENTRY_TYPE",
+          "references_columns": [
+            "TYPE_CODE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "STORE_LOC",
+      "offset": 7231085,
+      "sql": "CREATE TABLE \"STORE_LOC\" (\"STORE_ID\" NUMBER NOT NULL ENABLE, \"STORE_DESC\" VARCHAR2(50) NOT NULL ENABLE, \"STORE_DESC_URDU\" VARCHAR2(50) NOT NULL ENABLE, \"CMP_ID\" NUMBER(5, 0))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "STORE_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "STORE_DESC",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "STORE_DESC_URDU",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "CMP_ID",
+          "oracle_type": "NUMBER(5, 0)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "STORE_ID"
+      ],
+      "unique_constraints": [
+        [
+          "STORE_DESC"
+        ],
+        [
+          "STORE_DESC_URDU"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "UM_MENU",
+      "offset": 7234039,
+      "sql": "CREATE TABLE \"UM_MENU\" (\"MENU_ID\" NUMBER(3, 0) NOT NULL ENABLE, \"MODULE_NAME\" VARCHAR2(99) NOT NULL ENABLE, \"MODULE_TYPE\" CHAR(1) NOT NULL ENABLE, \"APPLICATION\" VARCHAR2(15) NOT NULL ENABLE, \"PARENT_NODE\" NUMBER(3, 0), \"MENU_ADDRESS\" VARCHAR2(150), \"IS_VISIBLE\" CHAR(1), \"FILE_NAME\" VARCHAR2(50), \"IS_ROLE\" CHAR(1), \"CATE\" VARCHAR2(50))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "MENU_ID",
+          "oracle_type": "NUMBER(3, 0)",
+          "nullable": false
+        },
+        {
+          "name": "MODULE_NAME",
+          "oracle_type": "VARCHAR2(99)",
+          "nullable": false
+        },
+        {
+          "name": "MODULE_TYPE",
+          "oracle_type": "CHAR(1)",
+          "nullable": false
+        },
+        {
+          "name": "APPLICATION",
+          "oracle_type": "VARCHAR2(15)",
+          "nullable": false
+        },
+        {
+          "name": "PARENT_NODE",
+          "oracle_type": "NUMBER(3, 0)",
+          "nullable": true
+        },
+        {
+          "name": "MENU_ADDRESS",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        },
+        {
+          "name": "IS_VISIBLE",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'Y'"
+        },
+        {
+          "name": "FILE_NAME",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "IS_ROLE",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        },
+        {
+          "name": "CATE",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "MENU_ID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "UM_MENU_TEMP",
+      "offset": 7243505,
+      "sql": "CREATE TABLE \"UM_MENU_TEMP\" (\"MENU_ID\" NUMBER(4, 0) NOT NULL ENABLE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "MENU_ID",
+          "oracle_type": "NUMBER(4, 0)",
+          "nullable": false
+        }
+      ],
+      "primary_key": [],
+      "unique_constraints": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "UM_USERS",
+      "offset": 7244290,
+      "sql": "CREATE TABLE \"UM_USERS\" (\"USER_ID\" NUMBER(4, 0) NOT NULL ENABLE, \"UNAME\" VARCHAR2(80), \"USER_NAME\" VARCHAR2(80), \"UPASS\" VARCHAR2(80), \"USER_STATUS\" CHAR(1) NOT NULL ENABLE, \"SYS_ADMIN\" CHAR(1), \"LAST_LOGIN_TIME\" DATE, \"REPORT_CMP_LIST\" CHAR(1))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "USER_ID",
+          "oracle_type": "NUMBER(4, 0)",
+          "nullable": false
+        },
+        {
+          "name": "UNAME",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "USER_NAME",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "UPASS",
+          "oracle_type": "VARCHAR2(80)",
+          "nullable": true
+        },
+        {
+          "name": "USER_STATUS",
+          "oracle_type": "CHAR(1)",
+          "nullable": false,
+          "default": "'A'"
+        },
+        {
+          "name": "SYS_ADMIN",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        },
+        {
+          "name": "LAST_LOGIN_TIME",
+          "oracle_type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "REPORT_CMP_LIST",
+          "oracle_type": "CHAR(1)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "USER_ID"
+      ],
+      "unique_constraints": [
+        [
+          "UNAME"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "UM_USERS_TEMP",
+      "offset": 7249537,
+      "sql": "CREATE TABLE \"UM_USERS_TEMP\" (\"USER_ID\" NUMBER(5, 0) NOT NULL ENABLE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "USER_ID",
+          "oracle_type": "NUMBER(5, 0)",
+          "nullable": false
+        }
+      ],
+      "primary_key": [
+        "USER_ID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "UM_USER_RIGHTS",
+      "offset": 7250545,
+      "sql": "CREATE TABLE \"UM_USER_RIGHTS\" (\"MENU_ID\" NUMBER(3, 0) NOT NULL ENABLE, \"USER_ID\" NUMBER(4, 0) NOT NULL ENABLE, \"SORT_ORDER\" NUMBER(3, 0), \"GRANTOR\" VARCHAR2(50), \"GRANTED_AT\" DATE, \"INS_ALW\" CHAR(1), \"UPD_ALW\" CHAR(1), \"DEL_ALW\" CHAR(1), \"QUE_ALW\" CHAR(1))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "MENU_ID",
+          "oracle_type": "NUMBER(3, 0)",
+          "nullable": false
+        },
+        {
+          "name": "USER_ID",
+          "oracle_type": "NUMBER(4, 0)",
+          "nullable": false
+        },
+        {
+          "name": "SORT_ORDER",
+          "oracle_type": "NUMBER(3, 0)",
+          "nullable": true,
+          "default": "0"
+        },
+        {
+          "name": "GRANTOR",
+          "oracle_type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "GRANTED_AT",
+          "oracle_type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "INS_ALW",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        },
+        {
+          "name": "UPD_ALW",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        },
+        {
+          "name": "DEL_ALW",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        },
+        {
+          "name": "QUE_ALW",
+          "oracle_type": "CHAR(1)",
+          "nullable": true,
+          "default": "'N'"
+        }
+      ],
+      "primary_key": [
+        "MENU_ID",
+        "USER_ID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "MENU_ID"
+          ],
+          "references_table": "UM_MENU",
+          "references_columns": [
+            "MENU_ID"
+          ]
+        },
+        {
+          "columns": [
+            "USER_ID"
+          ],
+          "references_table": "UM_USERS",
+          "references_columns": [
+            "USER_ID"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UOM",
+      "offset": 7259859,
+      "sql": "CREATE TABLE \"UOM\" (\"UOM_ID\" NUMBER NOT NULL ENABLE, \"UOM_DESC\" VARCHAR2(10) NOT NULL ENABLE, \"UOM_DESC_URDU\" VARCHAR2(10) NOT NULL ENABLE)  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "UOM_ID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "UOM_DESC",
+          "oracle_type": "VARCHAR2(10)",
+          "nullable": false
+        },
+        {
+          "name": "UOM_DESC_URDU",
+          "oracle_type": "VARCHAR2(10)",
+          "nullable": false
+        }
+      ],
+      "primary_key": [
+        "UOM_ID"
+      ],
+      "unique_constraints": [
+        [
+          "UOM_DESC"
+        ],
+        [
+          "UOM_DESC_URDU"
+        ]
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "URDU_CONFIG",
+      "offset": 7262386,
+      "sql": "CREATE TABLE \"URDU_CONFIG\" (\"CID\" NUMBER NOT NULL ENABLE, \"URDU_DESC\" VARCHAR2(150))  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING NOCOMPRESS",
+      "columns": [
+        {
+          "name": "CID",
+          "oracle_type": "NUMBER",
+          "nullable": false
+        },
+        {
+          "name": "URDU_DESC",
+          "oracle_type": "VARCHAR2(150)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "CID"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": []
+    }
+  ],
+  "constraints": [
+    {
+      "table": "BDDTL",
+      "kind": "primary_key",
+      "columns": [
+        "VNO"
+      ],
+      "offset": 4541,
+      "sql": "ALTER TABLE \"BDDTL\" ADD  PRIMARY KEY (\"VNO\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "BDMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 11690,
+      "sql": "ALTER TABLE \"BDMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "BDMST",
+      "kind": "unique",
+      "columns": [
+        "TRNNO",
+        "CMP_ID",
+        "TRN_TYPE"
+      ],
+      "offset": 11891,
+      "sql": "ALTER TABLE \"BDMST\" ADD  UNIQUE (\"TRNNO\", \"CMP_ID\", \"TRN_TYPE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "BRDTL",
+      "kind": "primary_key",
+      "columns": [
+        "VNO"
+      ],
+      "offset": 252113,
+      "sql": "ALTER TABLE \"BRDTL\" ADD  PRIMARY KEY (\"VNO\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "BRMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 308574,
+      "sql": "ALTER TABLE \"BRMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "BRMST",
+      "kind": "unique",
+      "columns": [
+        "TRNNO",
+        "CMP_ID",
+        "TRN_TYPE"
+      ],
+      "offset": 308775,
+      "sql": "ALTER TABLE \"BRMST\" ADD  UNIQUE (\"TRNNO\", \"CMP_ID\", \"TRN_TYPE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CHART",
+      "kind": "primary_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 383298,
+      "sql": "ALTER TABLE \"CHART\" ADD  PRIMARY KEY (\"CHCODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CHART",
+      "kind": "unique",
+      "columns": [
+        "CHDESC",
+        "FK_CCODE"
+      ],
+      "offset": 383500,
+      "sql": "ALTER TABLE \"CHART\" ADD  UNIQUE (\"CHDESC\", \"FK_CCODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CHART",
+      "kind": "unique",
+      "columns": [
+        "CHDESC_URDU",
+        "FK_CCODE"
+      ],
+      "offset": 383710,
+      "sql": "ALTER TABLE \"CHART\" ADD  UNIQUE (\"CHDESC_URDU\", \"FK_CCODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CITY",
+      "kind": "primary_key",
+      "columns": [
+        "PK_CCODE"
+      ],
+      "offset": 392808,
+      "sql": "ALTER TABLE \"CITY\" ADD  PRIMARY KEY (\"PK_CCODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CITY",
+      "kind": "unique",
+      "columns": [
+        "CNAME"
+      ],
+      "offset": 393011,
+      "sql": "ALTER TABLE \"CITY\" ADD  UNIQUE (\"CNAME\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CITY",
+      "kind": "unique",
+      "columns": [
+        "CNAME_URDU"
+      ],
+      "offset": 393206,
+      "sql": "ALTER TABLE \"CITY\" ADD  UNIQUE (\"CNAME_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "CONFIG",
+      "kind": "primary_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 397660,
+      "sql": "ALTER TABLE \"CONFIG\" ADD  PRIMARY KEY (\"CMP_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "DCDTL",
+      "kind": "primary_key",
+      "columns": [
+        "VNO"
+      ],
+      "offset": 407036,
+      "sql": "ALTER TABLE \"DCDTL\" ADD  PRIMARY KEY (\"VNO\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 262144 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "DCMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 413100,
+      "sql": "ALTER TABLE \"DCMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "DCMST",
+      "kind": "unique",
+      "columns": [
+        "DCNO",
+        "CMP_ID"
+      ],
+      "offset": 413301,
+      "sql": "ALTER TABLE \"DCMST\" ADD  UNIQUE (\"DCNO\", \"CMP_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "ENTRY_TYPE",
+      "kind": "primary_key",
+      "columns": [
+        "TYPE_CODE"
+      ],
+      "offset": 418229,
+      "sql": "ALTER TABLE \"ENTRY_TYPE\" ADD  PRIMARY KEY (\"TYPE_CODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "ENTRY_TYPE",
+      "kind": "unique",
+      "columns": [
+        "TYPE_DESC"
+      ],
+      "offset": 418439,
+      "sql": "ALTER TABLE \"ENTRY_TYPE\" ADD  UNIQUE (\"TYPE_DESC\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "ENTRY_TYPE",
+      "kind": "unique",
+      "columns": [
+        "DESCRIPTION"
+      ],
+      "offset": 418644,
+      "sql": "ALTER TABLE \"ENTRY_TYPE\" ADD  UNIQUE (\"DESCRIPTION\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "JDTL",
+      "kind": "primary_key",
+      "columns": [
+        "DTL_ID"
+      ],
+      "offset": 1963745,
+      "sql": "ALTER TABLE \"JDTL\" ADD  PRIMARY KEY (\"DTL_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 393216 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "JMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 2075324,
+      "sql": "ALTER TABLE \"JMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "JMST",
+      "kind": "unique",
+      "columns": [
+        "TRNNO",
+        "VTYPE",
+        "CMP_ID"
+      ],
+      "offset": 2075524,
+      "sql": "ALTER TABLE \"JMST\" ADD  UNIQUE (\"TRNNO\", \"VTYPE\", \"CMP_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 2183083,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PDTL",
+      "kind": "primary_key",
+      "columns": [
+        "VNO"
+      ],
+      "offset": 2189934,
+      "sql": "ALTER TABLE \"PDTL\" ADD  PRIMARY KEY (\"VNO\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 2207310,
+      "sql": "ALTER TABLE \"PMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PMST",
+      "kind": "unique",
+      "columns": [
+        "TRNNO",
+        "CMP_ID",
+        "TRN_TYPE",
+        "P_TYPE"
+      ],
+      "offset": 2207510,
+      "sql": "ALTER TABLE \"PMST\" ADD  UNIQUE (\"TRNNO\", \"CMP_ID\", \"TRN_TYPE\", \"P_TYPE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM",
+      "kind": "primary_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 2859431,
+      "sql": "ALTER TABLE \"PUR_ITEM\" ADD  PRIMARY KEY (\"ICODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 196608 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM",
+      "kind": "unique",
+      "columns": [
+        "INAME"
+      ],
+      "offset": 2859636,
+      "sql": "ALTER TABLE \"PUR_ITEM\" ADD  UNIQUE (\"INAME\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 393216 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM",
+      "kind": "unique",
+      "columns": [
+        "INAME_URDU"
+      ],
+      "offset": 2859836,
+      "sql": "ALTER TABLE \"PUR_ITEM\" ADD  UNIQUE (\"INAME_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 524288 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_DTL",
+      "kind": "primary_key",
+      "columns": [
+        "SUB_CODE"
+      ],
+      "offset": 2867446,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_DTL\" ADD  PRIMARY KEY (\"SUB_CODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_DTL",
+      "kind": "unique",
+      "columns": [
+        "SUB_DESC"
+      ],
+      "offset": 2867663,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_DTL\" ADD  UNIQUE (\"SUB_DESC\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_DTL",
+      "kind": "unique",
+      "columns": [
+        "SUB_DESC_URDU"
+      ],
+      "offset": 2867875,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_DTL\" ADD  UNIQUE (\"SUB_DESC_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_MST",
+      "kind": "primary_key",
+      "columns": [
+        "MAIN_CODE"
+      ],
+      "offset": 2870468,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_MST\" ADD  PRIMARY KEY (\"MAIN_CODE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_MST",
+      "kind": "unique",
+      "columns": [
+        "MAIN_DESC"
+      ],
+      "offset": 2870686,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_MST\" ADD  UNIQUE (\"MAIN_DESC\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_MST",
+      "kind": "unique",
+      "columns": [
+        "MAIN_DESC_URDU"
+      ],
+      "offset": 2870899,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_MST\" ADD  UNIQUE (\"MAIN_DESC_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "SDTL",
+      "kind": "primary_key",
+      "columns": [
+        "VNO"
+      ],
+      "offset": 6843113,
+      "sql": "ALTER TABLE \"SDTL\" ADD  PRIMARY KEY (\"VNO\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 1048576 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "SMST",
+      "kind": "primary_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7187838,
+      "sql": "ALTER TABLE \"SMST\" ADD  PRIMARY KEY (\"TRNID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "SMST",
+      "kind": "unique",
+      "columns": [
+        "TRNNO",
+        "CMP_ID",
+        "TRN_TYPE",
+        "S_TYPE"
+      ],
+      "offset": 7188039,
+      "sql": "ALTER TABLE \"SMST\" ADD  UNIQUE (\"TRNNO\", \"CMP_ID\", \"TRN_TYPE\", \"S_TYPE\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 131072 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "STORE_LOC",
+      "kind": "primary_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7231626,
+      "sql": "ALTER TABLE \"STORE_LOC\" ADD  PRIMARY KEY (\"STORE_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "STORE_LOC",
+      "kind": "unique",
+      "columns": [
+        "STORE_DESC"
+      ],
+      "offset": 7231834,
+      "sql": "ALTER TABLE \"STORE_LOC\" ADD  UNIQUE (\"STORE_DESC\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "STORE_LOC",
+      "kind": "unique",
+      "columns": [
+        "STORE_DESC_URDU"
+      ],
+      "offset": 7232039,
+      "sql": "ALTER TABLE \"STORE_LOC\" ADD  UNIQUE (\"STORE_DESC_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UM_MENU",
+      "kind": "primary_key",
+      "columns": [
+        "MENU_ID"
+      ],
+      "offset": 7238837,
+      "sql": "ALTER TABLE \"UM_MENU\" ADD  PRIMARY KEY (\"MENU_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UM_USERS",
+      "kind": "primary_key",
+      "columns": [
+        "USER_ID"
+      ],
+      "offset": 7245454,
+      "sql": "ALTER TABLE \"UM_USERS\" ADD  PRIMARY KEY (\"USER_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UM_USERS",
+      "kind": "unique",
+      "columns": [
+        "UNAME"
+      ],
+      "offset": 7245660,
+      "sql": "ALTER TABLE \"UM_USERS\" ADD  UNIQUE (\"UNAME\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UM_USERS_TEMP",
+      "kind": "primary_key",
+      "columns": [
+        "USER_ID"
+      ],
+      "offset": 7249830,
+      "sql": "ALTER TABLE \"UM_USERS_TEMP\" ADD  PRIMARY KEY (\"USER_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "kind": "primary_key",
+      "columns": [
+        "MENU_ID",
+        "USER_ID"
+      ],
+      "offset": 7255622,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" ADD  PRIMARY KEY (\"MENU_ID\", \"USER_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UOM",
+      "kind": "primary_key",
+      "columns": [
+        "UOM_ID"
+      ],
+      "offset": 7260420,
+      "sql": "ALTER TABLE \"UOM\" ADD  PRIMARY KEY (\"UOM_ID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UOM",
+      "kind": "unique",
+      "columns": [
+        "UOM_DESC"
+      ],
+      "offset": 7260620,
+      "sql": "ALTER TABLE \"UOM\" ADD  UNIQUE (\"UOM_DESC\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "UOM",
+      "kind": "unique",
+      "columns": [
+        "UOM_DESC_URDU"
+      ],
+      "offset": 7260817,
+      "sql": "ALTER TABLE \"UOM\" ADD  UNIQUE (\"UOM_DESC_URDU\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "URDU_CONFIG",
+      "kind": "primary_key",
+      "columns": [
+        "CID"
+      ],
+      "offset": 7262956,
+      "sql": "ALTER TABLE \"URDU_CONFIG\" ADD  PRIMARY KEY (\"CID\") USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 STORAGE(INITIAL 65536 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT) TABLESPACE \"USERS\" LOGGING ENABLE"
+    },
+    {
+      "table": "PUR_ITEM_GROUP_DTL",
+      "kind": "foreign_key",
+      "columns": [
+        "MAIN_CODE"
+      ],
+      "offset": 7285558,
+      "sql": "ALTER TABLE \"PUR_ITEM_GROUP_DTL\" ADD FOREIGN KEY (\"MAIN_CODE\") REFERENCES \"PUR_ITEM_GROUP_MST\" (\"MAIN_CODE\") ENABLE",
+      "references_table": "PUR_ITEM_GROUP_MST",
+      "references_columns": [
+        "MAIN_CODE"
+      ]
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "kind": "foreign_key",
+      "columns": [
+        "MENU_ID"
+      ],
+      "offset": 7285706,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" ADD FOREIGN KEY (\"MENU_ID\") REFERENCES \"UM_MENU\" (\"MENU_ID\") ENABLE",
+      "references_table": "UM_MENU",
+      "references_columns": [
+        "MENU_ID"
+      ]
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "kind": "foreign_key",
+      "columns": [
+        "USER_ID"
+      ],
+      "offset": 7285835,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" ADD FOREIGN KEY (\"USER_ID\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7285961,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7286082,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7286210,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7286328,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "OPEN_STOCK",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7286446,
+      "sql": "ALTER TABLE \"OPEN_STOCK\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "PUR_ITEM",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7286569,
+      "sql": "ALTER TABLE \"PUR_ITEM\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "PUR_ITEM",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_LARGE"
+      ],
+      "offset": 7286686,
+      "sql": "ALTER TABLE \"PUR_ITEM\" ADD FOREIGN KEY (\"UOM_ID_LARGE\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "DCMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7286800,
+      "sql": "ALTER TABLE \"DCMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "DCMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7286911,
+      "sql": "ALTER TABLE \"DCMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "DCMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7287029,
+      "sql": "ALTER TABLE \"DCMST\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "DCMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7287136,
+      "sql": "ALTER TABLE \"DCMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7287243,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7287352,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7287468,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7287577,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"PMST\" (\"TRNID\") ENABLE",
+      "references_table": "PMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7287679,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "PDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7287785,
+      "sql": "ALTER TABLE \"PDTL\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "CMP_LOGIN_ALW",
+      "kind": "foreign_key",
+      "columns": [
+        "USER_ID"
+      ],
+      "offset": 7287907,
+      "sql": "ALTER TABLE \"CMP_LOGIN_ALW\" ADD FOREIGN KEY (\"USER_ID\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "CMP_LOGIN_ALW",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7288035,
+      "sql": "ALTER TABLE \"CMP_LOGIN_ALW\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7288150,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7288259,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7288375,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "VNO_DCDTL"
+      ],
+      "offset": 7288484,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"VNO_DCDTL\") REFERENCES \"DCDTL\" (\"VNO\") ENABLE",
+      "references_table": "DCDTL",
+      "references_columns": [
+        "VNO"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "VNO_PDTL"
+      ],
+      "offset": 7288589,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"VNO_PDTL\") REFERENCES \"PDTL\" (\"VNO\") ENABLE",
+      "references_table": "PDTL",
+      "references_columns": [
+        "VNO"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7288692,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7288798,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"SMST\" (\"TRNID\") ENABLE",
+      "references_table": "SMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "SDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7288900,
+      "sql": "ALTER TABLE \"SDTL\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "BDMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7289014,
+      "sql": "ALTER TABLE \"BDMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BDMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7289125,
+      "sql": "ALTER TABLE \"BDMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BDMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7289243,
+      "sql": "ALTER TABLE \"BDMST\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "BDMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7289350,
+      "sql": "ALTER TABLE \"BDMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "BDMST",
+      "kind": "foreign_key",
+      "columns": [
+        "TRN_TYPE"
+      ],
+      "offset": 7289458,
+      "sql": "ALTER TABLE \"BDMST\" ADD FOREIGN KEY (\"TRN_TYPE\") REFERENCES \"ENTRY_TYPE\" (\"TYPE_CODE\") ENABLE",
+      "references_table": "ENTRY_TYPE",
+      "references_columns": [
+        "TYPE_CODE"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7289575,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7289686,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7289804,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7289915,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"DCMST\" (\"TRNID\") ENABLE",
+      "references_table": "DCMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7290020,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "DCDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7290128,
+      "sql": "ALTER TABLE \"DCDTL\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "CHART",
+      "kind": "foreign_key",
+      "columns": [
+        "FK_CCODE"
+      ],
+      "offset": 7290243,
+      "sql": "ALTER TABLE \"CHART\" ADD FOREIGN KEY (\"FK_CCODE\") REFERENCES \"CITY\" (\"PK_CCODE\") ENABLE",
+      "references_table": "CITY",
+      "references_columns": [
+        "PK_CCODE"
+      ]
+    },
+    {
+      "table": "JDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7290352,
+      "sql": "ALTER TABLE \"JDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "JDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7290461,
+      "sql": "ALTER TABLE \"JDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "JDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7290577,
+      "sql": "ALTER TABLE \"JDTL\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "JDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7290682,
+      "sql": "ALTER TABLE \"JDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"JMST\" (\"TRNID\") ENABLE",
+      "references_table": "JMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "PMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7290784,
+      "sql": "ALTER TABLE \"PMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "PMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7290893,
+      "sql": "ALTER TABLE \"PMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7291010,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7291121,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7291239,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7291350,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"BDMST\" (\"TRNID\") ENABLE",
+      "references_table": "BDMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "PMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7291454,
+      "sql": "ALTER TABLE \"PMST\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "PMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7291559,
+      "sql": "ALTER TABLE \"PMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "PMST",
+      "kind": "foreign_key",
+      "columns": [
+        "TRN_TYPE"
+      ],
+      "offset": 7291665,
+      "sql": "ALTER TABLE \"PMST\" ADD FOREIGN KEY (\"TRN_TYPE\") REFERENCES \"ENTRY_TYPE\" (\"TYPE_CODE\") ENABLE",
+      "references_table": "ENTRY_TYPE",
+      "references_columns": [
+        "TYPE_CODE"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7291781,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "BDDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7291889,
+      "sql": "ALTER TABLE \"BDDTL\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "CONFIG",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE_CASH"
+      ],
+      "offset": 7292005,
+      "sql": "ALTER TABLE \"CONFIG\" ADD FOREIGN KEY (\"CHCODE_CASH\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7292118,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7292229,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7292347,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7292454,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "TRN_TYPE"
+      ],
+      "offset": 7292562,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"TRN_TYPE\") REFERENCES \"ENTRY_TYPE\" (\"TYPE_CODE\") ENABLE",
+      "references_table": "ENTRY_TYPE",
+      "references_columns": [
+        "TYPE_CODE"
+      ]
+    },
+    {
+      "table": "BRMST",
+      "kind": "foreign_key",
+      "columns": [
+        "STORE_ID"
+      ],
+      "offset": 7292679,
+      "sql": "ALTER TABLE \"BRMST\" ADD FOREIGN KEY (\"STORE_ID\") REFERENCES \"STORE_LOC\" (\"STORE_ID\") ENABLE",
+      "references_table": "STORE_LOC",
+      "references_columns": [
+        "STORE_ID"
+      ]
+    },
+    {
+      "table": "SMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7292793,
+      "sql": "ALTER TABLE \"SMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "SMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7292902,
+      "sql": "ALTER TABLE \"SMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "SMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CHCODE"
+      ],
+      "offset": 7293018,
+      "sql": "ALTER TABLE \"SMST\" ADD FOREIGN KEY (\"CHCODE\") REFERENCES \"CHART\" (\"CHCODE\") ENABLE",
+      "references_table": "CHART",
+      "references_columns": [
+        "CHCODE"
+      ]
+    },
+    {
+      "table": "SMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7293123,
+      "sql": "ALTER TABLE \"SMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "SMST",
+      "kind": "foreign_key",
+      "columns": [
+        "TRN_TYPE"
+      ],
+      "offset": 7293229,
+      "sql": "ALTER TABLE \"SMST\" ADD FOREIGN KEY (\"TRN_TYPE\") REFERENCES \"ENTRY_TYPE\" (\"TYPE_CODE\") ENABLE",
+      "references_table": "ENTRY_TYPE",
+      "references_columns": [
+        "TYPE_CODE"
+      ]
+    },
+    {
+      "table": "JMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7293344,
+      "sql": "ALTER TABLE \"JMST\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "JMST",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7293453,
+      "sql": "ALTER TABLE \"JMST\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "JMST",
+      "kind": "foreign_key",
+      "columns": [
+        "CMP_ID"
+      ],
+      "offset": 7293569,
+      "sql": "ALTER TABLE \"JMST\" ADD FOREIGN KEY (\"CMP_ID\") REFERENCES \"CONFIG\" (\"CMP_ID\") ENABLE",
+      "references_table": "CONFIG",
+      "references_columns": [
+        "CMP_ID"
+      ]
+    },
+    {
+      "table": "JMST",
+      "kind": "foreign_key",
+      "columns": [
+        "VTYPE"
+      ],
+      "offset": 7293675,
+      "sql": "ALTER TABLE \"JMST\" ADD FOREIGN KEY (\"VTYPE\") REFERENCES \"ENTRY_TYPE\" (\"TYPE_CODE\") ENABLE",
+      "references_table": "ENTRY_TYPE",
+      "references_columns": [
+        "TYPE_CODE"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER"
+      ],
+      "offset": 7293788,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"E_USER\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "E_USER_UPDATE"
+      ],
+      "offset": 7293899,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"E_USER_UPDATE\") REFERENCES \"UM_USERS\" (\"USER_ID\") ENABLE",
+      "references_table": "UM_USERS",
+      "references_columns": [
+        "USER_ID"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "UOM_ID_SMALL"
+      ],
+      "offset": 7294017,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"UOM_ID_SMALL\") REFERENCES \"UOM\" (\"UOM_ID\") ENABLE",
+      "references_table": "UOM",
+      "references_columns": [
+        "UOM_ID"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "TRNID"
+      ],
+      "offset": 7294128,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"TRNID\") REFERENCES \"BRMST\" (\"TRNID\") ENABLE",
+      "references_table": "BRMST",
+      "references_columns": [
+        "TRNID"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "ICODE"
+      ],
+      "offset": 7294233,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"ICODE\") REFERENCES \"PUR_ITEM\" (\"ICODE\") ENABLE",
+      "references_table": "PUR_ITEM",
+      "references_columns": [
+        "ICODE"
+      ]
+    },
+    {
+      "table": "BRDTL",
+      "kind": "foreign_key",
+      "columns": [
+        "VNO_SDTL"
+      ],
+      "offset": 7294341,
+      "sql": "ALTER TABLE \"BRDTL\" ADD FOREIGN KEY (\"VNO_SDTL\") REFERENCES \"SDTL\" (\"VNO\") ENABLE",
+      "references_table": "SDTL",
+      "references_columns": [
+        "VNO"
+      ]
+    }
+  ],
+  "defaults": [
+    {
+      "table": "BDDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 3725,
+      "sql": "ALTER TABLE \"BDDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "BDMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 11153,
+      "sql": "ALTER TABLE \"BDMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "BRDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 19104,
+      "sql": "ALTER TABLE \"BRDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "BRMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 271247,
+      "sql": "ALTER TABLE \"BRMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "DCDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 406648,
+      "sql": "ALTER TABLE \"DCDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "DCMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 412775,
+      "sql": "ALTER TABLE \"DCMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "JDTL",
+      "column": "DR",
+      "expression": "0",
+      "offset": 420836,
+      "sql": "ALTER TABLE \"JDTL\" MODIFY (\"DR\" DEFAULT 0)"
+    },
+    {
+      "table": "JDTL",
+      "column": "CR",
+      "expression": "0",
+      "offset": 420915,
+      "sql": "ALTER TABLE \"JDTL\" MODIFY (\"CR\" DEFAULT 0)"
+    },
+    {
+      "table": "JDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 420994,
+      "sql": "ALTER TABLE \"JDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "JMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 1979675,
+      "sql": "ALTER TABLE \"JMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "PDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 2189507,
+      "sql": "ALTER TABLE \"PDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "PMST",
+      "column": "P_TYPE",
+      "expression": "'R'",
+      "offset": 2206722,
+      "sql": "ALTER TABLE \"PMST\" MODIFY (\"P_TYPE\" DEFAULT 'R' )"
+    },
+    {
+      "table": "PMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 2206808,
+      "sql": "ALTER TABLE \"PMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "SDTL",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 2873406,
+      "sql": "ALTER TABLE \"SDTL\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "SMST",
+      "column": "S_TYPE",
+      "expression": "'R'",
+      "offset": 6864223,
+      "sql": "ALTER TABLE \"SMST\" MODIFY (\"S_TYPE\" DEFAULT 'R' )"
+    },
+    {
+      "table": "SMST",
+      "column": "GEN_DATE",
+      "expression": "SYSDATE",
+      "offset": 6864309,
+      "sql": "ALTER TABLE \"SMST\" MODIFY (\"GEN_DATE\" DEFAULT SYSDATE )"
+    },
+    {
+      "table": "UM_MENU",
+      "column": "IS_VISIBLE",
+      "expression": "'Y'",
+      "offset": 7234573,
+      "sql": "ALTER TABLE \"UM_MENU\" MODIFY (\"IS_VISIBLE\" DEFAULT 'Y')"
+    },
+    {
+      "table": "UM_MENU",
+      "column": "IS_ROLE",
+      "expression": "'N'",
+      "offset": 7234668,
+      "sql": "ALTER TABLE \"UM_MENU\" MODIFY (\"IS_ROLE\" DEFAULT 'N')"
+    },
+    {
+      "table": "UM_USERS",
+      "column": "USER_STATUS",
+      "expression": "'A'",
+      "offset": 7244734,
+      "sql": "ALTER TABLE \"UM_USERS\" MODIFY (\"USER_STATUS\" DEFAULT 'A' )"
+    },
+    {
+      "table": "UM_USERS",
+      "column": "SYS_ADMIN",
+      "expression": "'N'",
+      "offset": 7244833,
+      "sql": "ALTER TABLE \"UM_USERS\" MODIFY (\"SYS_ADMIN\" DEFAULT 'N')"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "column": "SORT_ORDER",
+      "expression": "0",
+      "offset": 7251006,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" MODIFY (\"SORT_ORDER\" DEFAULT 0)"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "column": "INS_ALW",
+      "expression": "'N'",
+      "offset": 7251113,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" MODIFY (\"INS_ALW\" DEFAULT 'N')"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "column": "UPD_ALW",
+      "expression": "'N'",
+      "offset": 7251219,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" MODIFY (\"UPD_ALW\" DEFAULT 'N')"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "column": "DEL_ALW",
+      "expression": "'N'",
+      "offset": 7251325,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" MODIFY (\"DEL_ALW\" DEFAULT 'N')"
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "column": "QUE_ALW",
+      "expression": "'N'",
+      "offset": 7251431,
+      "sql": "ALTER TABLE \"UM_USER_RIGHTS\" MODIFY (\"QUE_ALW\" DEFAULT 'N'\n)"
+    }
+  ],
+  "views": [
+    {
+      "name": "DCTOSALE_BAL",
+      "columns": [
+        "TYPE",
+        "CMP_ID",
+        "TRNNO",
+        "DC_VNO",
+        "TRNDATE",
+        "CHCODE",
+        "ICODE",
+        "QTY_LARGE_UOM_DES",
+        "QTY_LARGE_UOM_SALE",
+        "UOM_ID_SMALL",
+        "QTY_SMALL_UOM",
+        "QTY_DES",
+        "QTY_SALE",
+        "VALUE_DES",
+        "VALUE_SALE",
+        "RATE",
+        "STORE_ID"
+      ],
+      "offset": 7264229,
+      "sql": "CREATE VIEW \"DCTOSALE_BAL\" (\"TYPE\",\"CMP_ID\",\"TRNNO\",\"DC_VNO\",\"TRNDATE\",\"CHCODE\",\"ICODE\",\"QTY_LARGE_UOM_DES\",\"QTY_LARGE_UOM_SALE\",\"UOM_ID_SMALL\",\"QTY_SMALL_UOM\",\"QTY_DES\",\"QTY_SALE\",\"VALUE_DES\",\"VALUE_SALE\",\"RATE\",\"STORE_ID\") AS \nSELECT 'DC' TYPE,A.CMP_ID,A.DCNO TRNNO,B.VNO DC_VNO,A.DCDATE TRNDATE,A.CHCODE,B.ICODE,B.QTY_LARGE_UOM QTY_LARGE_UOM_DES,0 QTY_LARGE_UOM_SALE,B.UOM_ID_SMALL,B.QTY_SMALL_UOM,NVL(B.QTY,0) QTY_DES,0QTY_SALE,NVL(B.QTY * B.RATE,0)VALUE_DES,0VALUE_SALE,B.RATE,b.STORE_ID\nFROM   DCMST A, DCDTL B\nWHERE  A.TRNID = B.TRNID\nAND    A.CHCODE IS NOT NULL\nAND    NVL(B.QTY * B.RATE,0) > 0\nUNION ALL\nSELECT 'SALE',A.CMP_ID,A.TRNNO,B.VNO_DCDTL,A.TRNDATE,DECODE(A.S_TYPE,'C','04010001','R',A.CHCODE),B.ICODE,0,B.QTY_LARGE_UOM QTY_LARGE_UOM_SALE,B.UOM_ID_SMALL,B.QTY_SMALL_UOM,0,NVL(B.QTY,0),0,NVL(B.QTY * B.RATE,0),B.RATE,B.STORE_ID\nFROM   SMST A, SDTL B, PUR_ITEM I\nWHERE  A.TRNID  = B.TRNID\nAND    B.ICODE  = I.ICODE\nAND    A.S_TYPE = 'R'\nAND    NVL(B.QTY * B.RATE,0) > 0\n"
+    },
+    {
+      "name": "PUR_VW_DTL",
+      "columns": [
+        "VTYPE",
+        "TRNID",
+        "TRNNO",
+        "TRNDATE",
+        "CMP_ID",
+        "CHCODE",
+        "NARRATION",
+        "DR",
+        "CR"
+      ],
+      "offset": 7265219,
+      "sql": "CREATE VIEW \"PUR_VW_DTL\" (\"VTYPE\",\"TRNID\",\"TRNNO\",\"TRNDATE\",\"CMP_ID\",\"CHCODE\",\"NARRATION\",\"DR\",\"CR\") AS \nSELECT PM.TRN_TYPE VTYPE,PM.TRNID,PM.TRNNO,PM.TRNDATE,PM.CMP_ID,DECODE(PM.TRN_TYPE,7,I.PUR_CODE,10,I.EXP_CODE) CHCODE,\n       DECODE(PM.TRN_TYPE,7,'Purchase Invoice#',10,'Sale Return#')||PM.BILLNO||' '||DECODE(PM.DISCOUNT,'','','Discount'||' '||PM.DISCOUNT)NARRATION,\n\t     ROUND(SUM(NVL(PD.QTY *(PD.RATE-(PD.RATE/100*NVL(PD.DIS_PER,0))),0)))- NVL(PM.DISCOUNT,0) - NVL(PM.BREAKAGE,0) + NVL(PM.FREIGHT,0) DR,\n\t     0 CR\nFROM   PMST PM, PDTL PD, PUR_ITEM I\nWHERE  PM.TRNID = PD.TRNID\nAND    PD.ICODE = I.ICODE\nHAVING ROUND(SUM(NVL(PD.QTY *(PD.RATE-(PD.RATE/100*NVL(PD.DIS_PER,0))),0))) > 0\nGROUP BY PM.TRNID,PM.TRNNO,PM.TRNDATE,PM.TRN_TYPE,PM.CMP_ID,I.PUR_CODE,I.EXP_CODE,PM.BILLNO,PM.DISCOUNT,PM.BREAKAGE,PM.FREIGHT\nUNION ALL\nSELECT PM.TRN_TYPE VTYPE,PM.TRNID,PM.TRNNO,PM.TRNDATE,PM.CMP_ID,DECODE(PM.P_TYPE,'R',PM.CHCODE,'C','04010001'),\n       DECODE(PM.TRN_TYPE,7,'Purchase Invoice#',10,'Sale Return#')||PM.BILLNO||' '||DECODE(PM.DISCOUNT,'','','Discount'||' '||PM.DISCOUNT)NARRATION,\n\t     0 DR,\n\t     ROUND(SUM(NVL(PD.QTY *(PD.RATE-(PD.RATE/100*NVL(PD.DIS_PER,0))),0)))- NVL(PM.DISCOUNT,0) - NVL(PM.BREAKAGE,0) + NVL(PM.FREIGHT,0) CR\nFROM   PMST PM, PDTL PD\nWHERE  PM.TRNID = PD.TRNID\nHAVING ROUND(SUM(NVL(PD.QTY *(PD.RATE-(PD.RATE/100*NVL(PD.DIS_PER,0))),0)))- NVL(PM.DISCOUNT,0) > 0\nGROUP BY PM.TRNID,PM.TRNNO,PM.TRNDATE,PM.TRN_TYPE,PM.CMP_ID,PM.CHCODE,PM.P_TYPE,PM.DISCOUNT,PM.BILLNO,PM.BREAKAGE,PM.FREIGHT\nUNION ALL\nSELECT BM.TRN_TYPE VTYPE,BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.CMP_ID,I.PUR_CODE CHCODE,\n       'Purchase Return Invoice#'||BM.BILLNO||' '||DECODE(BM.DISCOUNT,'','','Discount'||' '||BM.DISCOUNT)NARRATION,\n\t     0 DR,\n\t     ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) - NVL(BM.FREIGHT,0) CR\nFROM   BDMST BM, BDDTL BD, PUR_ITEM I\nWHERE  BM.TRNID = BD.TRNID\nAND    BD.ICODE = I.ICODE\nHAVING ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) > 0\nGROUP BY BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.TRN_TYPE,BM.CMP_ID,I.PUR_CODE,BM.BILLNO,BM.DISCOUNT,BM.FREIGHT\nUNION ALL\nSELECT BM.TRN_TYPE VTYPE,BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.CMP_ID,BM.CHCODE,\n       'Purchase Return Invoice#'||BM.BILLNO||' '||DECODE(BM.DISCOUNT,'','','Discount'||' '||BM.DISCOUNT)NARRATION,\n\t     ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0)))+ NVL(BM.FREIGHT,0) DR,\n\t     0 CR\nFROM   BDMST BM, BDDTL BD\nWHERE  BM.TRNID = BD.TRNID\nHAVING ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) > 0\nGROUP BY BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.TRN_TYPE,BM.CMP_ID,BM.CHCODE,BM.BILLNO,BM.FREIGHT,BM.DISCOUNT\n"
+    },
+    {
+      "name": "SALE_VW_DTL",
+      "columns": [
+        "VTYPE",
+        "TRNID",
+        "TRNNO",
+        "TRNDATE",
+        "CMP_ID",
+        "CHCODE",
+        "NARRATION",
+        "DR",
+        "CR"
+      ],
+      "offset": 7267882,
+      "sql": "CREATE VIEW \"SALE_VW_DTL\" (\"VTYPE\",\"TRNID\",\"TRNNO\",\"TRNDATE\",\"CMP_ID\",\"CHCODE\",\"NARRATION\",\"DR\",\"CR\") AS \nSELECT SM.TRN_TYPE VTYPE,SM.TRNID,SM.TRNNO,SM.TRNDATE,SM.CMP_ID,DECODE(SM.S_TYPE,'R',SM.CHCODE,'C','04010001') CHCODE,\n       DECODE(SM.TRN_TYPE,8,'Sale Invoice#',9,'Purchase Return#')||SM.BILLNO||' '||DECODE(SM.DISCOUNT,'','','Discount'||' '||SM.DISCOUNT)NARRATION,\n\t     ROUND(SUM(NVL(SD.QTY *(SD.RATE-(SD.RATE/100*NVL(SD.DIS_PER,0))),0)))- NVL(SM.DISCOUNT,0) - NVL(SM.BREAKAGE,0) +  NVL(SM.FREIGHT,0) DR,\n\t      0 CR\nFROM   SMST SM, SDTL SD\nWHERE  SM.TRNID = SD.TRNID\nHAVING ROUND(SUM(NVL(SD.QTY *(SD.RATE-(SD.RATE/100*NVL(SD.DIS_PER,0))),0)))- NVL(SM.DISCOUNT,0) > 0\nGROUP BY SM.TRNID,SM.TRNNO,SM.TRNDATE,SM.TRN_TYPE,SM.CMP_ID,SM.CHCODE,SM.S_TYPE,SM.DISCOUNT,SM.BILLNO,SM.BREAKAGE,SM.FREIGHT\nUNION ALL\nSELECT SM.TRN_TYPE VTYPE,SM.TRNID,SM.TRNNO,SM.TRNDATE,SM.CMP_ID,DECODE(SM.TRN_TYPE,8,I.EXP_CODE,9,I.PUR_CODE) CHCODE,\n       DECODE(SM.TRN_TYPE,8,'Sale Invoice#',9,'Purchase Return#')||SM.BILLNO||' '||DECODE(SM.DISCOUNT,'','','Discount'||' '||SM.DISCOUNT)NARRATION,\n\t     0 DR,\n\t     ROUND(SUM(NVL(SD.QTY *(SD.RATE-(SD.RATE/100*NVL(SD.DIS_PER,0))),0))) - NVL(SM.BREAKAGE,0) +  NVL(SM.FREIGHT,0) CR\nFROM   SMST SM, SDTL SD, PUR_ITEM I\nWHERE  SM.TRNID = SD.TRNID\nAND    SD.ICODE = I.ICODE\nHAVING ROUND(SUM(NVL(SD.QTY *(SD.RATE-(SD.RATE/100*NVL(SD.DIS_PER,0))),0))) > 0\nGROUP BY SM.TRNID,SM.TRNNO,SM.TRNDATE,SM.TRN_TYPE,SM.CMP_ID,I.PUR_CODE,I.EXP_CODE,SM.BILLNO,SM.DISCOUNT,SM.BREAKAGE,SM.FREIGHT\nUNION ALL\nSELECT BM.TRN_TYPE VTYPE,BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.CMP_ID,BM.CHCODE,\n       'Breakage Sale Return' NARRATION,\n\t     0 DR,\n\t     ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) - NVL(BM.BREAKAGE,0) -  NVL(BM.FREIGHT,0) CR\nFROM   BRMST BM, BRDTL BD\nWHERE  BM.TRNID = BD.TRNID\nHAVING ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0)))- NVL(BM.BREAKAGE,0) > 0\nGROUP BY BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.TRN_TYPE,BM.CMP_ID,BM.CHCODE,BM.BILLNO,BM.BREAKAGE,BM.FREIGHT\nUNION ALL\nSELECT BM.TRN_TYPE VTYPE,BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.CMP_ID,I.EXP_CODE CHCODE,\n       'Breakage Sale Return' NARRATION,\n\t     ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) - NVL(BM.BREAKAGE,0) -  NVL(BM.FREIGHT,0) DR,\n\t     0 CR\nFROM   BRMST BM, BRDTL BD, PUR_ITEM I\nWHERE  BM.TRNID = BD.TRNID\nAND    BD.ICODE = I.ICODE\nHAVING ROUND(SUM(NVL(BD.QTY *(BD.RATE-(BD.RATE/100*NVL(BD.DIS_PER,0))),0))) > 0\nGROUP BY BM.TRNID,BM.TRNNO,BM.TRNDATE,BM.TRN_TYPE,BM.CMP_ID,I.EXP_CODE,BM.BILLNO,BM.BREAKAGE,BM.FREIGHT\n"
+    },
+    {
+      "name": "STOCK",
+      "columns": [
+        "TAG",
+        "CMP_ID",
+        "STORE_ID",
+        "TRNID",
+        "TRNNO",
+        "TRNDATE",
+        "CHCODE",
+        "VNO",
+        "ICODE",
+        "UOM_ID_LARGE",
+        "UOM_ID_SMALL",
+        "QTY_SMALL_UOM",
+        "QTY_IN",
+        "QTY_OUT",
+        "VALUE_IN",
+        "VALUE_OUT",
+        "RATE"
+      ],
+      "offset": 7270448,
+      "sql": "CREATE VIEW \"STOCK\" (\"TAG\",\"CMP_ID\",\"STORE_ID\",\"TRNID\",\"TRNNO\",\"TRNDATE\",\"CHCODE\",\"VNO\",\"ICODE\",\"UOM_ID_LARGE\",\"UOM_ID_SMALL\",\"QTY_SMALL_UOM\",\"QTY_IN\",\"QTY_OUT\",\"VALUE_IN\",\"VALUE_OUT\",\"RATE\") AS \nSELECT 'OP'TAG,OS.CMP_ID,OS.STORE_ID,OS.TRNID,OS.TRNID TRNNO,OS.OPEN_DATE TRNDATE,I.PUR_CODE CHCODE,OS.TRNID VNO,OS.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,NVL(OS.OPEN_QTY,0) QTY_IN,0 QTY_OUT,NVL(OS.OPEN_QTY * OS.OPEN_RATE,0) VALUE_IN,0 VALUE_OUT,OS.OPEN_RATE RATE\nFROM   PUR_ITEM I, OPEN_STOCK OS\nWHERE  I.ICODE = OS.ICODE\nAND    NVL(OS.OPEN_QTY,0) > 0\nUNION ALL\nSELECT DECODE(PM.TRN_TYPE,7,'PV',10,'SR')TAG,PM.CMP_ID,PD.STORE_ID,PM.TRNID,PM.TRNNO,PM.TRNDATE,PM.CHCODE,PD.VNO,PD.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,NVL(PD.QTY,0) QTY_IN,0 QTY_OUT,NVL(PD.QTY * GET_PUR_RATE(PM.CMP_ID,PD.ICODE,PM.TRNDATE),0) VALUE_IN,0 VALUE_OUT,GET_PUR_RATE(PM.CMP_ID,PD.ICODE,PM.TRNDATE)\nFROM   PMST PM,PDTL PD,PUR_ITEM I\nWHERE  PM.TRNID = PD.TRNID\nAND    PD.ICODE = I.ICODE\nAND    NVL(PD.QTY,0) > 0\nUNION ALL\nSELECT DECODE(SM.TRN_TYPE,8,'SV',9,'PR')TAG,SM.CMP_ID,SD.STORE_ID,SM.TRNID,SM.TRNNO,SM.TRNDATE,SM.CHCODE,SD.VNO,SD.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,0 QTY_IN,NVL(SD.QTY,0) QTY_OUT,0 VALUE_IN,NVL(SD.QTY * GET_PUR_RATE(SM.CMP_ID,SD.ICODE,SM.TRNDATE),0) VALUE_OUT,GET_PUR_RATE(SM.CMP_ID,SD.ICODE,SM.TRNDATE)\nFROM   SMST SM,SDTL SD,PUR_ITEM I\nWHERE  SM.TRNID = SD.TRNID\nAND    SD.ICODE = I.ICODE\nAND    SD.VNO_DCDTL IS NULL\nAND    NVL(SD.QTY,0) > 0\n/*\nUNION ALL\nSELECT 'DC' TAG,DM.CMP_ID,Dd.STORE_ID,DM.TRNID,DM.DCNO,DM.DCDATE,DM.CHCODE,DD.VNO,I.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,0 QTY_IN,NVL(DD.QTY,0) QTY_OUT,0 VALUE_IN,NVL(DD.QTY * GET_PUR_RATE(DM.CMP_ID,DD.ICODE),0) VALUE_OUT,GET_PUR_RATE(DM.CMP_ID,DD.ICODE,DM.DCDATE)\nFROM   DCMST DM,DCDTL DD,PUR_ITEM I\nWHERE  DM.TRNID = DD.TRNID\nAND    DD.ICODE = I.ICODE\nAND    NVL(DD.QTY,0) > 0\n*/\n"
+    },
+    {
+      "name": "STOCKB",
+      "columns": [
+        "TAG",
+        "CMP_ID",
+        "STORE_ID",
+        "TRNID",
+        "TRNNO",
+        "TRNDATE",
+        "CHCODE",
+        "VNO",
+        "ICODE",
+        "UOM_ID_LARGE",
+        "UOM_ID_SMALL",
+        "QTY_SMALL_UOM",
+        "QTY_IN",
+        "QTY_OUT",
+        "VALUE_IN",
+        "VALUE_OUT",
+        "RATE"
+      ],
+      "offset": 7272428,
+      "sql": "CREATE VIEW \"STOCKB\" (\"TAG\",\"CMP_ID\",\"STORE_ID\",\"TRNID\",\"TRNNO\",\"TRNDATE\",\"CHCODE\",\"VNO\",\"ICODE\",\"UOM_ID_LARGE\",\"UOM_ID_SMALL\",\"QTY_SMALL_UOM\",\"QTY_IN\",\"QTY_OUT\",\"VALUE_IN\",\"VALUE_OUT\",\"RATE\") AS \nSELECT 'BR' TAG,RM.CMP_ID,RM.STORE_ID,RM.TRNID,RM.TRNNO,RM.TRNDATE,RM.CHCODE,RD.VNO,RD.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,NVL(RD.QTY,0) QTY_IN,0 QTY_OUT,NVL(RD.QTY * RD.RATE,0) VALUE_IN,0 VALUE_OUT,RATE\nFROM   BRMST RM,BRDTL RD,PUR_ITEM I\nWHERE  RM.TRNID = RD.TRNID\nAND    RD.ICODE = I.ICODE\nAND    NVL(RD.QTY,0) > 0\nUNION ALL\nSELECT 'BD' TAG,DM.CMP_ID,DD.STORE_ID,DM.TRNID,DM.TRNNO,DM.TRNDATE,DM.CHCODE,DD.VNO,DD.ICODE,I.UOM_ID_LARGE,I.UOM_ID_SMALL,NVL(I.QTY_SMALL_UOM,0) QTY_SMALL_UOM,NVL(DD.QTY,0) QTY_IN,0 QTY_OUT,NVL(DD.QTY * DD.RATE,0) VALUE_IN,0 VALUE_OUT,DD.RATE\nFROM   BDMST DM,BDDTL DD,PUR_ITEM I\nWHERE  DM.TRNID = DD.TRNID\nAND    DD.ICODE = I.ICODE\nAND    NVL(DD.QTY,0) > 0\n"
+    },
+    {
+      "name": "LEDGER",
+      "columns": [
+        "TRNID",
+        "TRNNO",
+        "VTYPE",
+        "CMP_ID",
+        "CHCODE",
+        "TRNDATE",
+        "DR",
+        "CR",
+        "NARRATION"
+      ],
+      "offset": 7273353,
+      "sql": "CREATE VIEW \"LEDGER\" (\"TRNID\",\"TRNNO\",\"VTYPE\",\"CMP_ID\",\"CHCODE\",\"TRNDATE\",\"DR\",\"CR\",\"NARRATION\") AS \nSELECT A.TRNID,A.TRNNO,A.VTYPE,A.CMP_ID,B.CHCODE,A.TRNDATE,NVL(B.DR,0) DR,NVL(B.CR,0) CR,B.NARRATION\nFROM   JMST A, JDTL B\nWHERE  A.TRNID = B.TRNID\nAND    A.CANCEL IS NULL\nUNION ALL\nSELECT A.TRNID,A.TRNNO,A.VTYPE,A.CMP_ID,C.CHCODE_CASH,A.TRNDATE,DECODE(A.VTYPE,3,SUM(NVL(B.CR,0)),0),DECODE(A.VTYPE,2,SUM(NVL(B.DR,0)),0),NULL\nFROM   JMST A, JDTL B,CONFIG C\nWHERE  A.TRNID = B.TRNID\nAND    A.CMP_ID = C.CMP_ID\nAND    A.VTYPE IN (2,3)\nAND    A.CANCEL IS NULL\nGROUP BY A.TRNID,A.TRNNO,A.TRNDATE,A.VTYPE,A.CMP_ID,C.CHCODE_CASH\nUNION ALL\nSELECT TRNID,TRNNO,VTYPE,CMP_ID,CHCODE,TRNDATE,ROUND(NVL(DR,0)),ROUND(NVL(CR,0)),NARRATION FROM PUR_VW_DTL\nUNION ALL\nSELECT TRNID,TRNNO,VTYPE,CMP_ID,CHCODE,TRNDATE,ROUND(NVL(DR,0)),ROUND(NVL(CR,0)),NARRATION FROM SALE_VW_DTL\n"
+    }
+  ],
+  "functions": [
+    {
+      "name": "GET_PUR_RATE",
+      "offset": 7274477,
+      "sql": "CREATE FUNCTION GET_PUR_RATE (pCMP_ID NUMBER,pICODE VARCHAR2,pTRNDATE DATE) RETURN NUMBER IS\nv_RATE NUMBER;\nBEGIN\n  SELECT RATE  INTO v_RATE\n  FROM\n  (SELECT OP.CMP_ID,OP.OPEN_DATE TRNDATE,OP.TRNID VNO,OP.ICODE,NVL(OP.OPEN_RATE,0) RATE\n  FROM  OPEN_STOCK OP,PUR_ITEM I\n  WHERE OP.ICODE      = I.ICODE\n  AND   OP.CMP_ID     = pCMP_ID\n  AND   OP.OPEN_DATE <= pTRNDATE\n  AND   OP.ICODE      = pICODE\n  UNION ALL\n  SELECT PM.CMP_ID,PM.TRNDATE,PD.VNO,PD.ICODE,NVL(PD.RATE,0)RATE\n  FROM  PMST PM , PDTL PD, PUR_ITEM I\n  WHERE PM.TRNID = PD.TRNID\n  AND   PD.ICODE    = I.ICODE\n  AND   PM.TRN_TYPE = 7\n  AND   PM.CMP_ID   = pCMP_ID\n  AND   PM.TRNDATE <= pTRNDATE\n  AND   PD.ICODE    = pICODE\n  ) A\n  WHERE A.VNO =\n  (\n  SELECT MAX(B.VNO)\n  FROM\n  (SELECT OP.CMP_ID,OP.OPEN_DATE TRNDATE,OP.TRNID VNO,OP.ICODE\n  FROM  OPEN_STOCK OP\n  WHERE OP.CMP_ID     = pCMP_ID\n  AND   OP.OPEN_DATE <= pTRNDATE\n  AND   OP.ICODE      = pICODE\n  UNION ALL\n  SELECT PM.CMP_ID,PM.TRNDATE,PD.VNO,PD.ICODE\n  FROM  PMST PM , PDTL PD\n  WHERE PM.TRNID    = PD.TRNID\n  AND   PM.TRN_TYPE = 7\n  AND   PM.CMP_ID   = pCMP_ID\n  AND   PM.TRNDATE <= pTRNDATE\n  AND   PD.ICODE    = pICODE\n  )B\n  );\n   RETURN v_RATE;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  BEGIN\n   SELECT RATE  INTO v_RATE\n   FROM\n   (\n   SELECT PM.CMP_ID,PM.TRNDATE,PD.VNO,PD.ICODE,NVL(PD.RATE,0) RATE\n   FROM  PMST PM , PDTL PD\n   WHERE PM.TRNID    = PD.TRNID\n   AND   PM.TRN_TYPE = 10\n   AND   PM.CMP_ID   = pCMP_ID\n   AND   PM.TRNDATE <= pTRNDATE\n   AND   PD.ICODE    = pICODE\n  ) A\n  WHERE A.VNO =\n  (\n  SELECT MAX(B.VNO)\n  FROM\n  (\n  SELECT PM.CMP_ID,PM.TRNDATE,PD.VNO\n  FROM  PMST PM , PDTL PD\n  WHERE PM.TRNID    = PD.TRNID\n  AND   PM.TRN_TYPE = 10\n  AND   PM.CMP_ID   = pCMP_ID\n  AND   PM.TRNDATE <= pTRNDATE\n  AND   PD.ICODE    = pICODE\n  )B\n  );\n   RETURN v_RATE;\n EXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN 0;\n END;\nEND;\n"
+    },
+    {
+      "name": "GET_IP",
+      "offset": 7276534,
+      "sql": "CREATE FUNCTION GET_IP RETURN VARCHAR2 IS\nBEGIN\n  RETURN SYS_CONTEXT('USERENV','IP_ADDRESS');\nEND;\n"
+    },
+    {
+      "name": "GET_TERMINAL",
+      "offset": 7276683,
+      "sql": "CREATE FUNCTION GET_TERMINAL RETURN VARCHAR2 IS\nBEGIN\n  RETURN SYS_CONTEXT('USERENV','TERMINAL');\nEND;\n"
+    },
+    {
+      "name": "PATH",
+      "offset": 7276842,
+      "sql": "CREATE FUNCTION PATH (MD CHAR) RETURN CHAR IS\nL LOCATION.LOC%TYPE;\nBEGIN\n  SELECT LOC INTO L\n  FROM LOCATION\n  WHERE MODULE = MD;\n  RETURN L;\nEXCEPTION WHEN NO_DATA_FOUND THEN\n RETURN 'farrukh@faitsolutions.com';\nEND;\n"
+    },
+    {
+      "name": "GET_URDU",
+      "offset": 7277120,
+      "sql": "CREATE FUNCTION GET_URDU ( P_CID NUMBER ) RETURN CHAR IS\nv_URDU_DESC URDU_CONFIG.URDU_DESC%TYPE;\nBEGIN\n\n  SELECT URDU_DESC INTO v_URDU_DESC\n  FROM   URDU_CONFIG\n  WHERE  CID = p_CID;\n\n  RETURN v_URDU_DESC;\nEXCEPTION\n WHEN NO_DATA_FOUND THEN\n RETURN NULL;\n\nEND;\n"
+    },
+    {
+      "name": "GET_UOM_URDU",
+      "offset": 7277453,
+      "sql": "CREATE FUNCTION GET_UOM_URDU (p_CD NUMBER) RETURN CHAR IS\nv_UOM UOM.UOM_DESC_URDU%TYPE;\nBEGIN\n  SELECT UOM_DESC_URDU INTO v_UOM\n    FROM UOM\n   WHERE UOM_ID = p_CD;\n   RETURN v_UOM;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_UOM",
+      "offset": 7277761,
+      "sql": "CREATE FUNCTION GET_UOM (p_CD NUMBER) RETURN CHAR IS\nv_UOM UOM.UOM_DESC%TYPE;\nBEGIN\n  SELECT UOM_DESC INTO v_UOM\n    FROM UOM\n   WHERE UOM_ID = p_CD;\n   RETURN v_UOM;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_STORE_URDU",
+      "offset": 7278049,
+      "sql": "CREATE FUNCTION GET_STORE_URDU (p_CD NUMBER) RETURN CHAR IS\nv_SD STORE_LOC.STORE_DESC_URDU%TYPE;\nBEGIN\n  SELECT STORE_DESC_URDU INTO v_SD\n    FROM STORE_LOC\n   WHERE STORE_ID = p_CD;\n   RETURN v_SD;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_STORE",
+      "offset": 7278376,
+      "sql": "CREATE FUNCTION GET_STORE (p_CD NUMBER) RETURN CHAR IS\nv_SD STORE_LOC.STORE_DESC%TYPE;\nBEGIN\n  SELECT STORE_DESC INTO v_SD\n    FROM STORE_LOC\n   WHERE STORE_ID = p_CD;\n   RETURN v_SD;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_MAX_USER_ID",
+      "offset": 7278683,
+      "sql": "CREATE FUNCTION GET_MAX_USER_ID RETURN NUMBER IS\n    MAX_ID  NUMBER;\nBEGIN\n    SELECT NVL(MAX(USER_ID),0)+1\n    INTO MAX_ID\n    FROM UM_USERS;\n    RETURN MAX_ID;\nEND GET_MAX_USER_ID;\n"
+    },
+    {
+      "name": "GET_MAX_MENU_ID",
+      "offset": 7278933,
+      "sql": "CREATE FUNCTION GET_MAX_MENU_ID RETURN NUMBER IS\n    MAX_ID  NUMBER;\nBEGIN\n    SELECT NVL(MAX(MENU_ID),0)+1\n    INTO MAX_ID\n    FROM UM_MENU;\n    RETURN MAX_ID;\nEND GET_MAX_MENU_ID;\n"
+    },
+    {
+      "name": "GET_INAME_URDU",
+      "offset": 7279182,
+      "sql": "CREATE FUNCTION GET_INAME_URDU (CODE CHAR)RETURN CHAR IS\nNAM PUR_ITEM.INAME_URDU%TYPE;\nBEGIN\n  SELECT INAME_URDU INTO NAM\n  FROM PUR_ITEM\n  WHERE ICODE = CODE;\n  RETURN NAM;\nEXCEPTION WHEN NO_DATA_FOUND THEN\n RETURN '---';\n\nEND;\n"
+    },
+    {
+      "name": "GET_INAME",
+      "offset": 7279483,
+      "sql": "CREATE FUNCTION GET_INAME (CODE CHAR)RETURN CHAR IS\nNAM PUR_ITEM.INAME%TYPE;\nBEGIN\n  SELECT INAME INTO NAM\n  FROM PUR_ITEM\n  WHERE ICODE = CODE;\n  RETURN NAM;\nEXCEPTION WHEN NO_DATA_FOUND THEN\n RETURN '---';\n\nEND;\n"
+    },
+    {
+      "name": "GET_ETYPE",
+      "offset": 7279764,
+      "sql": "CREATE FUNCTION GET_ETYPE (ET NUMBER) RETURN CHAR IS\nETYPE ENTRY_TYPE.TYPE_DESC%TYPE;\nBEGIN\n  SELECT TYPE_DESC INTO ETYPE\n  FROM ENTRY_TYPE\n  WHERE TYPE_CODE = ET;\n  RETURN ETYPE;\nEXCEPTION WHEN NO_DATA_FOUND THEN\n\tRETURN '---';\nEND;\n"
+    },
+    {
+      "name": "GET_EDESC",
+      "offset": 7280063,
+      "sql": "CREATE FUNCTION GET_EDESC (ET NUMBER) RETURN CHAR IS\nETYPE ENTRY_TYPE.DESCRIPTION%TYPE;\nBEGIN\n  SELECT DESCRIPTION INTO ETYPE\n  FROM ENTRY_TYPE\n  WHERE TYPE_CODE = ET;\n  RETURN ETYPE;\nEXCEPTION\n\tWHEN NO_DATA_FOUND THEN\n\tRETURN '---';\nEND;\n"
+    },
+    {
+      "name": "GET_COMPANY_URDU",
+      "offset": 7280369,
+      "sql": "CREATE function GET_COMPANY_URDU ( C NUMBER) RETURN CHAR IS\nA CONFIG.CMPNAME_URDU%TYPE;\nBEGIN\nSELECT CMPNAME_URDU INTO A\nFROM   CONFIG\nWHERE  CMP_ID = C;\nRETURN A;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN  '---All Companies---';\nEND;\n"
+    },
+    {
+      "name": "GET_COMPANY",
+      "offset": 7280681,
+      "sql": "CREATE function GET_COMPANY ( C NUMBER) RETURN CHAR IS\nA CONFIG.CMPNAME%TYPE;\nBEGIN\nSELECT CMPNAME INTO A\nFROM   CONFIG\nWHERE  CMP_ID = C;\nRETURN A;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN 'farrukh@faitsolutions.com';\nEND;\n"
+    },
+    {
+      "name": "GET_CITY_URDU",
+      "offset": 7280978,
+      "sql": "CREATE FUNCTION GET_CITY_URDU (p_CD NUMBER) RETURN CHAR IS\nv_CN CITY.CNAME_URDU%TYPE;\nBEGIN\n  SELECT CNAME_URDU INTO v_CN\n    FROM CITY\n   WHERE PK_CCODE = p_CD;\n   RETURN v_CN;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_CITY",
+      "offset": 7281283,
+      "sql": "CREATE FUNCTION GET_CITY (p_CD NUMBER) RETURN CHAR IS\nv_CN CITY.CNAME%TYPE;\nBEGIN\n  SELECT CNAME INTO v_CN\n    FROM CITY\n   WHERE PK_CCODE = p_CD;\n   RETURN v_CN;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN NULL;\nEND;\n"
+    },
+    {
+      "name": "GET_ACCOUNT_CITY_URDU",
+      "offset": 7281568,
+      "sql": "CREATE FUNCTION GET_ACCOUNT_CITY_URDU (p_CODE  CHAR) RETURN CHAR IS\nv_CHDESC VARCHAR2(1000);\nBEGIN\n  SELECT C.CHDESC_URDU||' '||CT.CNAME_URDU INTO v_CHDESC\n  FROM   CHART C,CITY CT\n  WHERE C.FK_CCODE = CT.PK_CCODE\n  AND   C.CHCODE   = p_CODE;\n\n  RETURN v_CHDESC;\n\nEXCEPTION\n\tWHEN NO_DATA_FOUND THEN\nRETURN '--';\n\nEND;\n"
+    },
+    {
+      "name": "GET_ACCOUNT_URDU",
+      "offset": 7281973,
+      "sql": "CREATE FUNCTION GET_ACCOUNT_URDU (p_CODE  CHAR) RETURN CHAR IS\nv_CHDESC VARCHAR2(1000);\nBEGIN\n  SELECT C.CHDESC_URDU INTO v_CHDESC\n  FROM   CHART C\n  WHERE  C.CHCODE   = p_CODE;\n\n  RETURN v_CHDESC;\n\nEXCEPTION\n\tWHEN NO_DATA_FOUND THEN\nRETURN '--';\n\nEND;\n"
+    },
+    {
+      "name": "GET_ACCOUNT_CITY",
+      "offset": 7282306,
+      "sql": "CREATE FUNCTION GET_ACCOUNT_CITY (p_CODE  CHAR) RETURN CHAR IS\nv_CHDESC VARCHAR2(1000);\nBEGIN\n  SELECT C.CHDESC||' '||CT.CNAME INTO v_CHDESC\n  FROM   CHART C,CITY CT\n  WHERE C.FK_CCODE = CT.PK_CCODE\n  AND   C.CHCODE   = p_CODE;\n\n  RETURN v_CHDESC;\n\nEXCEPTION\n\tWHEN NO_DATA_FOUND THEN\nRETURN '--';\n\nEND;\n"
+    },
+    {
+      "name": "GET_USER_NAME",
+      "offset": 7282691,
+      "sql": "CREATE function GET_USER_NAME ( U NUMBER) RETURN CHAR IS\nA CONFIG.CMPNAME%TYPE;\nBEGIN\nSELECT USER_NAME INTO A\nFROM UM_USERS\nWHERE USER_ID = U;\nRETURN A;\nEXCEPTION\n  WHEN NO_DATA_FOUND THEN\n  RETURN 'farrukh@faitsolutions.com';\nEND;\n"
+    },
+    {
+      "name": "GET_ACCOUNT",
+      "offset": 7282994,
+      "sql": "CREATE FUNCTION GET_ACCOUNT (p_CODE  CHAR) RETURN CHAR IS\nv_CHDESC VARCHAR2(1000);\nBEGIN\n  SELECT CHART.CHDESC INTO v_CHDESC\n  FROM   CHART\n  WHERE  CHART.CHCODE   = p_CODE;\n\n  RETURN v_CHDESC;\n\nEXCEPTION\n\tWHEN NO_DATA_FOUND THEN\nRETURN '--';\n\nEND;\n"
+    }
+  ],
+  "indexes": [],
+  "sequences": []
+}

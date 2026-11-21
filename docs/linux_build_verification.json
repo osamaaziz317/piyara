@@ -1,0 +1,219 @@
+{
+  "verified_at": "2026-10-02T16:40:10+00:00",
+  "archive": "build/linux/run-20261002T133804Z-6b84588ef23c/attempt-20261002T163713Z-2e180b80be6a/release/BIFMA_TRADERS-0.3.0.dev6-linux-x86_64-DEVELOPMENT.tar.gz",
+  "archive_sha256": "27516ca140d1cff5f9b384a32f2cb988a4d9e061db6163d3d1d6169ade592e56",
+  "archive_bytes": 13957349,
+  "source_inventory_sha256": "332f9b0cd9de5233da40cbc57defb3585cfc20fcd76aedb25965e6eebd53637f",
+  "source_input_count": 42,
+  "verification_input_count": 38,
+  "source_checks": [
+    {
+      "check": "application-tests",
+      "passed": true,
+      "tests_run": 495,
+      "seconds": 99.225,
+      "log_sha256": "fde62f933d259200d553234bd405bdfec21dd3db205f604bb7fa5ccfca168086"
+    },
+    {
+      "check": "packaging-tests",
+      "passed": true,
+      "tests_run": 50,
+      "seconds": 6.754,
+      "log_sha256": "7cfddd9a5f8aba2cbad5515e142ea35d3dee41a9433a2319878252b338e24359"
+    },
+    {
+      "check": "native-gui-smoke",
+      "passed": true,
+      "tests_run": null,
+      "seconds": 6.946,
+      "log_sha256": "a9105c8ca008e8e9314e0d819154fe699e2db79bca522490b2b2b8ff1a97f70e"
+    }
+  ],
+  "build_frozen_checks": [
+    {
+      "check": "native-runtime",
+      "passed": true
+    },
+    {
+      "check": "history-runtime",
+      "passed": true
+    },
+    {
+      "check": "native-welcome",
+      "passed": true
+    },
+    {
+      "check": "history-explicit-database",
+      "passed": true
+    },
+    {
+      "check": "history-preview",
+      "passed": true
+    },
+    {
+      "check": "relocated-welcome",
+      "passed": true
+    },
+    {
+      "check": "native-workflow",
+      "passed": true
+    }
+  ],
+  "independent_extracted_archive_checks": {
+    "checksum_matches_sidecar": true,
+    "source_matches_current_files": true,
+    "verification_inputs_match_current_files": true,
+    "tar_paths_and_link_targets_confined": true,
+    "bundle_audit_passed": true,
+    "bundle_file_inventory_matches_receipt": true,
+    "native_runtime_passed": true,
+    "history_runtime_passed": true,
+    "native_welcome_without_database_passed": true,
+    "history_requires_explicit_database": true,
+    "full_frozen_workflow_passed": true,
+    "empty_working_directory_unchanged": true,
+    "temporary_extraction_removed": true
+  },
+  "extracted_runtime_reports": {
+    "BIFMA_TRADERS": {
+      "application_version": "0.3.0.dev6",
+      "bits": 64,
+      "machine": "x86_64",
+      "platform": "linux",
+      "python_version": "3.10.12",
+      "sqlite_version": "3.37.2",
+      "tk_version": "8.6.12"
+    },
+    "BIFMA_HISTORY": {
+      "application_version": "0.3.0.dev6",
+      "bits": 64,
+      "machine": "x86_64",
+      "platform": "linux",
+      "python_version": "3.10.12",
+      "sqlite_version": "3.37.2",
+      "tk_version": "8.6.12"
+    }
+  },
+  "independent_extracted_workflow": {
+    "application_version": "0.3.0.dev6",
+    "effects": {
+      "backup_scope": "primary-and-cash-before-approver",
+      "breakage_quantity": "2",
+      "cash_account_closing": "-34",
+      "cash_book_closing": "-34",
+      "cash_book_credit": "70",
+      "cash_book_debit": "36",
+      "cash_book_rows": 5,
+      "cash_extra_vouchers": 0,
+      "cash_posted_documents": 5,
+      "cash_regular_quantity": "7",
+      "cash_sales_report_net": "20",
+      "cash_sales_report_rows": 3,
+      "city_balance_accounts": 3,
+      "city_balance_groups": 2,
+      "city_closing_credit": "54",
+      "city_closing_debit": "54",
+      "city_credit": "106",
+      "city_debit": "106",
+      "city_filtered_accounts": 1,
+      "configured_cash_selected": true,
+      "journal_imbalances": 0,
+      "posted_documents": 11,
+      "primary_posted_documents": 6,
+      "regular_quantity": "8",
+      "restored_active_sessions_before_login": 0,
+      "restored_cash_account_closing": "-34",
+      "restored_cash_documents": 5,
+      "restored_cash_regular_quantity": "7",
+      "restored_cash_settlement_preserved": true,
+      "restored_documents": 9,
+      "sale_total": "34",
+      "widget_variable_lifecycle": true
+    },
+    "frozen": true,
+    "passed": true,
+    "scenario": "native-workflow-v2",
+    "schema_version": 1,
+    "steps": [
+      {
+        "passed": true,
+        "step": "widget-variable-lifecycle"
+      },
+      {
+        "passed": true,
+        "step": "create-admin-company"
+      },
+      {
+        "passed": true,
+        "step": "opening-unit-conversion"
+      },
+      {
+        "passed": true,
+        "step": "discounted-sale"
+      },
+      {
+        "passed": true,
+        "step": "document-export"
+      },
+      {
+        "passed": true,
+        "step": "native-reports"
+      },
+      {
+        "passed": true,
+        "step": "report-export"
+      },
+      {
+        "passed": true,
+        "step": "breakage-pool"
+      },
+      {
+        "passed": true,
+        "step": "cash-purchase-sale"
+      },
+      {
+        "passed": true,
+        "step": "cash-linked-returns-reversal"
+      },
+      {
+        "passed": true,
+        "step": "cash-reports-separation"
+      },
+      {
+        "passed": true,
+        "step": "cash-book-report"
+      },
+      {
+        "passed": true,
+        "step": "city-balances-report"
+      },
+      {
+        "passed": true,
+        "step": "backup"
+      },
+      {
+        "passed": true,
+        "step": "restricted-approver-reversal"
+      },
+      {
+        "passed": true,
+        "step": "balanced-journals"
+      },
+      {
+        "passed": true,
+        "step": "restore-revokes-sessions"
+      }
+    ],
+    "temporary_data_removed": true
+  },
+  "linux_baseline": {
+    "elf_files_checked": 55,
+    "glibc_symbol_requirement": "2.35",
+    "scope": "symbol requirement only; target distribution, display, fonts and printers still require qualification"
+  },
+  "production_ready": false,
+  "limitations": [
+    "Frozen synthetic workflow passed; actual workstation and original-business-workflow acceptance remain pending.",
+    "Other Linux distributions, native Windows execution, Urdu fonts, printers and original application parity remain unqualified."
+  ]
+}

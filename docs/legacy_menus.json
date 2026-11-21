@@ -1,0 +1,714 @@
+{
+  "format_version": 1,
+  "source": {
+    "name": "BT-270926.EXE",
+    "sha256": "d2cd806aa644320cf6d2eaa6192e7d6c840adcde8226f62b5ad1422980cc7e9e",
+    "size_bytes": 7299072,
+    "export_version": "V10.02.01",
+    "tables_decoded": [
+      "UM_MENU",
+      "ENTRY_TYPE"
+    ]
+  },
+  "scope": "Functional definitions only; no user, company, account, contact or credential values",
+  "summary": {
+    "menus": 46,
+    "entry_types": 12,
+    "visible_flag_Y": 46,
+    "other_visibility_flags": 0,
+    "nodes_without_file": 11,
+    "module_file_tokens": 35,
+    "declared_report_modules": 13
+  },
+  "menus": [
+    {
+      "menu_id": 1,
+      "module_name": "Financial management System",
+      "module_type": "M",
+      "application": "FMS",
+      "parent_id": null,
+      "menu_address": "FMS",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 2,
+      "module_name": "Setup",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 1,
+      "menu_address": "FMS.SETUP",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 3,
+      "module_name": "User Management",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 2,
+      "menu_address": "SETUP_MENU.USER_MANAGEMENT",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 4,
+      "module_name": "* Users / Catalog",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 3,
+      "menu_address": "USER_MANAGEMENT_MENU.USERS_CATALOG",
+      "visibility_flag": "Y",
+      "file_name": "UM_CATALOG",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 5,
+      "module_name": "* User Rights",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 3,
+      "menu_address": "USER_MANAGEMENT_MENU.USER_RIGHTS",
+      "visibility_flag": "Y",
+      "file_name": "UM_USER_PRIVS",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 6,
+      "module_name": "* Company Cinfiguration",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 2,
+      "menu_address": "SETUP_MENU.COMPANY_CONFIG",
+      "visibility_flag": "Y",
+      "file_name": "CONFIG",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 7,
+      "module_name": "Coding",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 1,
+      "menu_address": "FMS.CODING",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 8,
+      "module_name": "* City Definition",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 7,
+      "menu_address": "CODING_MENU.CITY_DEFINITION",
+      "visibility_flag": "Y",
+      "file_name": "CITY",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 9,
+      "module_name": "Finalcial Coding",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 7,
+      "menu_address": "CODING_MENU.FINANCIAL_CODING",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 10,
+      "module_name": "Inventory Coding",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 7,
+      "menu_address": "CODING_MENU.INVENTORY_CODING",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 11,
+      "module_name": "* Chart Of Account ( Level1 )",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 9,
+      "menu_address": "FINANCIAL_CODING_MENU.CHART_LEVEL1",
+      "visibility_flag": "Y",
+      "file_name": "CHART_LEVEL1",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 12,
+      "module_name": "* Chart Of Account ( Level2 )",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 9,
+      "menu_address": "FINANCIAL_CODING_MENU.CHART_LEVEL2",
+      "visibility_flag": "Y",
+      "file_name": "CHART_LEVEL2",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 13,
+      "module_name": "* Chart Of Account ( Level3 )",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 9,
+      "menu_address": "FINANCIAL_CODING_MENU.CHART_LEVEL3",
+      "visibility_flag": "Y",
+      "file_name": "CHART_LEVEL3",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 14,
+      "module_name": "* Main Item Groups",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 10,
+      "menu_address": "INVENTORY_CODING_MENU.MAIN_ITEM_GROUPS",
+      "visibility_flag": "Y",
+      "file_name": "MAIN_ITEM",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 15,
+      "module_name": "* Item Sub Groups",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 10,
+      "menu_address": "INVENTORY_CODING_MENU.ITEM_SUB_GROUPS",
+      "visibility_flag": "Y",
+      "file_name": "SUB_ITEM",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 16,
+      "module_name": "* Item Definition",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 10,
+      "menu_address": "INVENTORY_CODING_MENU.ITEM_DEFINITION",
+      "visibility_flag": "Y",
+      "file_name": "PUR_ITEMS",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 17,
+      "module_name": "* Opening Stock",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 10,
+      "menu_address": "INVENTORY_CODING_MENU.OPEN_STOCK",
+      "visibility_flag": "Y",
+      "file_name": "OPEN_STOCK",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 18,
+      "module_name": "Financial Transactions",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 1,
+      "menu_address": "FMS.FINANCE",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 19,
+      "module_name": "* Opening Balance",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 18,
+      "menu_address": "FINANCE_MENU.OPENING_BALANCES",
+      "visibility_flag": "Y",
+      "file_name": "OPEN_BAL",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 20,
+      "module_name": "* Cash Payment Voucher",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 18,
+      "menu_address": "FINANCE_MENU.CASH_PAYMENT_VOUCHER",
+      "visibility_flag": "Y",
+      "file_name": "CPV",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 21,
+      "module_name": "* Cash Receipt Voucher",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 18,
+      "menu_address": "FINANCE_MENU.CASH_RECEIPT_VOUCHER",
+      "visibility_flag": "Y",
+      "file_name": "CRV",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 22,
+      "module_name": "* Journal Voucher",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 18,
+      "menu_address": "FINANCE_MENU.JOURNAL_VOUCHER",
+      "visibility_flag": "Y",
+      "file_name": "JV",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 23,
+      "module_name": "Inventiry",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 1,
+      "menu_address": "FMS.INVENTORY",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 24,
+      "module_name": "* Purchase",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.PURCHASE",
+      "visibility_flag": "Y",
+      "file_name": "PUR",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 25,
+      "module_name": "* Sale Credit",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.SALE_CREDIT",
+      "visibility_flag": "Y",
+      "file_name": "SALE_CREDIT",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 26,
+      "module_name": "* Puchase Return",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.PUR_RET",
+      "visibility_flag": "Y",
+      "file_name": "PUR_RET",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 27,
+      "module_name": "* Sale Return",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.SALE_RET",
+      "visibility_flag": "Y",
+      "file_name": "SALE_RET",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 28,
+      "module_name": "Reports",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 1,
+      "menu_address": "FMS.REPORTS",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 29,
+      "module_name": "Financial Reports",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 28,
+      "menu_address": "REPORTS_MENU.FINANCIAL_REPORTS",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 30,
+      "module_name": "Inventory Reports",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 28,
+      "menu_address": "INVENTORY_REPORTS",
+      "visibility_flag": "Y",
+      "file_name": null,
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 31,
+      "module_name": "* Voucher Printing",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.VOUCHER",
+      "visibility_flag": "Y",
+      "file_name": "VOUCHER",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 32,
+      "module_name": "* Cash Statement",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.CASH",
+      "visibility_flag": "Y",
+      "file_name": "CASH",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 33,
+      "module_name": "* Account Ledger",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.LEDGER",
+      "visibility_flag": "Y",
+      "file_name": "LEDGER",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 34,
+      "module_name": "* Trial Balance",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.TRIAL_BALANCE",
+      "visibility_flag": "Y",
+      "file_name": "TRIALBALANCE",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 35,
+      "module_name": "* Sub Trial Balance",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.SUB_TRIAL_BALANCE",
+      "visibility_flag": "Y",
+      "file_name": "SUB_TRIAL",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 36,
+      "module_name": "* Profit And Loss Report",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.PLS_REPORT",
+      "visibility_flag": "Y",
+      "file_name": "PLS",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 37,
+      "module_name": "* Stock Summary",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_REPORTS_MENU.STOCK_SUMMARY",
+      "visibility_flag": "Y",
+      "file_name": "STOCK",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 38,
+      "module_name": "* Stock Summary With Value",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_REPORTS_MENU.STOCK_VALUE",
+      "visibility_flag": "Y",
+      "file_name": "STOCK_VALUE",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 39,
+      "module_name": "* Item Ledger",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_REPORTS_MENU.ITEM_LEDGER",
+      "visibility_flag": "Y",
+      "file_name": "ITEM_LEDGER",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 40,
+      "module_name": "* Purchase / Purchase Return Detail",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_REPORTS_MENU.PUR_DETAIL",
+      "visibility_flag": "Y",
+      "file_name": "PUR_DETAIL",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 41,
+      "module_name": "* Sale / Sale Return Detail",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_REPORTS_MENU.SALE_DETAIL",
+      "visibility_flag": "Y",
+      "file_name": "SALE_DETAIL",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 42,
+      "module_name": "* Counter Sale",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.SALE_COUNTER",
+      "visibility_flag": "Y",
+      "file_name": "SALE_COUNTER",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 43,
+      "module_name": "* City Wise Recovery report",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 29,
+      "menu_address": "FINANCIAL_REPORTS_MENU.CITY_RECOVERY",
+      "visibility_flag": "Y",
+      "file_name": "CITY_RECOVERY",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 44,
+      "module_name": "* Uom Coding",
+      "module_type": "R",
+      "application": "FMS",
+      "parent_id": 30,
+      "menu_address": "INVENTORY_CODING_MENU.UOM",
+      "visibility_flag": "Y",
+      "file_name": "UOM",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 45,
+      "module_name": "* Breakage Receive",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.BRCV",
+      "visibility_flag": "Y",
+      "file_name": "BRCV",
+      "role_flag": "N",
+      "category": null
+    },
+    {
+      "menu_id": 46,
+      "module_name": "* Breakage Dispatch",
+      "module_type": "F",
+      "application": "FMS",
+      "parent_id": 23,
+      "menu_address": "INVENTORY_MENU.BDIS",
+      "visibility_flag": "Y",
+      "file_name": "BDISP",
+      "role_flag": "N",
+      "category": null
+    }
+  ],
+  "entry_types": [
+    {
+      "type_code": 1,
+      "type_desc": "JV",
+      "description": "Journal Voucher"
+    },
+    {
+      "type_code": 2,
+      "type_desc": "CPV",
+      "description": "Cash Payment Voucher"
+    },
+    {
+      "type_code": 3,
+      "type_desc": "CRV",
+      "description": "Cash Receipt Voucher"
+    },
+    {
+      "type_code": 4,
+      "type_desc": "BPV",
+      "description": "Bank Payment Voucher"
+    },
+    {
+      "type_code": 5,
+      "type_desc": "BRV",
+      "description": "Bank Receipt Voucher"
+    },
+    {
+      "type_code": 6,
+      "type_desc": "OP",
+      "description": "Opening Balance"
+    },
+    {
+      "type_code": 7,
+      "type_desc": "PV",
+      "description": "Purchase Voucher"
+    },
+    {
+      "type_code": 8,
+      "type_desc": "SV",
+      "description": "Sale Voucher"
+    },
+    {
+      "type_code": 9,
+      "type_desc": "PRV",
+      "description": "Purchase Return Voucher"
+    },
+    {
+      "type_code": 10,
+      "type_desc": "SRV",
+      "description": "Sale Return Voucher"
+    },
+    {
+      "type_code": 11,
+      "type_desc": "BRR",
+      "description": "Breakage Receive Voucher"
+    },
+    {
+      "type_code": 12,
+      "type_desc": "BRD",
+      "description": "Breakage Dispatch Voucher"
+    }
+  ],
+  "declared_report_modules": [
+    {
+      "menu_id": 31,
+      "module_name": "* Voucher Printing",
+      "file_name": "VOUCHER"
+    },
+    {
+      "menu_id": 32,
+      "module_name": "* Cash Statement",
+      "file_name": "CASH"
+    },
+    {
+      "menu_id": 33,
+      "module_name": "* Account Ledger",
+      "file_name": "LEDGER"
+    },
+    {
+      "menu_id": 34,
+      "module_name": "* Trial Balance",
+      "file_name": "TRIALBALANCE"
+    },
+    {
+      "menu_id": 35,
+      "module_name": "* Sub Trial Balance",
+      "file_name": "SUB_TRIAL"
+    },
+    {
+      "menu_id": 36,
+      "module_name": "* Profit And Loss Report",
+      "file_name": "PLS"
+    },
+    {
+      "menu_id": 37,
+      "module_name": "* Stock Summary",
+      "file_name": "STOCK"
+    },
+    {
+      "menu_id": 38,
+      "module_name": "* Stock Summary With Value",
+      "file_name": "STOCK_VALUE"
+    },
+    {
+      "menu_id": 39,
+      "module_name": "* Item Ledger",
+      "file_name": "ITEM_LEDGER"
+    },
+    {
+      "menu_id": 40,
+      "module_name": "* Purchase / Purchase Return Detail",
+      "file_name": "PUR_DETAIL"
+    },
+    {
+      "menu_id": 41,
+      "module_name": "* Sale / Sale Return Detail",
+      "file_name": "SALE_DETAIL"
+    },
+    {
+      "menu_id": 43,
+      "module_name": "* City Wise Recovery report",
+      "file_name": "CITY_RECOVERY"
+    },
+    {
+      "menu_id": 44,
+      "module_name": "* Uom Coding",
+      "file_name": "UOM"
+    }
+  ],
+  "limitations": [
+    "Visibility is the catalog flag; effective user access was not extracted.",
+    "Menu ID order is deterministic presentation, not proved original user-specific sort order.",
+    "File names are tokens without extensions, directories, or recovered form/report contents.",
+    "Uom Coding is declared R under Inventory Reports despite its coding label and menu address.",
+    "Delivery challan, bank payment and bank receipt menus are absent from this catalog.",
+    "A type or schema definition does not prove that its workflow was exposed in this application's menu."
+  ]
+}

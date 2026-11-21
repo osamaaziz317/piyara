@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-02T15:52:20+00:00",
+  "application_version": "0.3.0.dev5",
+  "scenario": "OPERATOR_GUIDE.md section8 after12posted documents",
+  "environment": "synthetic temporary native services; not target-machine manual exercise",
+  "expected_and_observed": {
+    "posted_documents": 12,
+    "cash_book_rows": 7,
+    "cash_in": "1106",
+    "cash_out": "50",
+    "cash_closing": "1056",
+    "city_accounts": 7,
+    "period_debit": "1382",
+    "period_credit": "1382",
+    "closing_debit": "1226",
+    "closing_credit": "1226",
+    "assigned_city_accounts": 1,
+    "assigned_city_closing_debit": "1056",
+    "unassigned_accounts": 6,
+    "unassigned_closing_debit": "170",
+    "unassigned_closing_credit": "1226"
+  },
+  "business_data_used": false,
+  "production_ready": false
+}

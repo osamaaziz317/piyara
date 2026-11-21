@@ -1,0 +1,104 @@
+{
+  "verified_at": "2026-10-02T16:25:22+00:00",
+  "application_version": "0.3.0.dev5",
+  "handoff_folder": "dist/development-0.3.0.dev5",
+  "scope": "Independent read-only audit of the assembled handoff and recorded build evidence. No application tests, GUI workflows or builds were rerun; no handoff/source/artifact files were changed.",
+  "production_ready": false,
+  "native_windows_qualified": false,
+  "business_data_included": false,
+  "handoff_checks": {
+    "exact_file_set_matches_manifest": true,
+    "file_count": 24,
+    "manifest_entries_verified": 23,
+    "all_file_sizes_and_sha256_match": true,
+    "source_file_references_verified": 22,
+    "source_sha256_and_transformed_flags_match_current_files": true,
+    "assembly_generator_sha256_matches": true,
+    "companion_markdown_links_and_anchors_verified": 30,
+    "all_companion_links_resolve": true,
+    "platform_extraction_and_launcher_commands_reviewed": true,
+    "diagnostic_commands_use_extracted_platform_executable_paths": true,
+    "source_only_engineering_references_labelled": true,
+    "operator_section8_and_diagnostic_screenshot_datasets_distinguished": true,
+    "operator_section8_receipt_scope_and_exact_totals_match": true,
+    "windows_under_wine_and_native_windows_exclusions_accurate": true
+  },
+  "archives": [
+    {
+      "platform": "linux-x86_64",
+      "handoff_archive": "dist/development-0.3.0.dev5/BIFMA_TRADERS-0.3.0.dev5-linux-x86_64-DEVELOPMENT.tar.gz",
+      "canonical_archive": "build/linux/run-20261002T133804Z-6b84588ef23c/attempt-20261002T160813Z-c0c52d66b362/release/BIFMA_TRADERS-0.3.0.dev5-linux-x86_64-DEVELOPMENT.tar.gz",
+      "bytes": 13953609,
+      "sha256": "392d62110e2b3d1972f366a382e30fb7fca3e74e8e03a15616b3845173397651",
+      "sidecar_and_receipt_match": true,
+      "bundle_entries_verified": 370,
+      "all_file_content_hashes_and_sizes_match_bundle_manifest": true,
+      "file_modes_and_symlink_targets_match_bundle_manifest": true,
+      "embedded_release_manifest_matches_companion": true
+    },
+    {
+      "platform": "windows-x64",
+      "built_under_wine": true,
+      "native_windows_qualified": false,
+      "handoff_archive": "dist/development-0.3.0.dev5/BIFMA_TRADERS-0.3.0.dev5-windows-x64-DEVELOPMENT-WINE.zip",
+      "canonical_archive": "build/windows/run-20261002T160849Z-431026ba447a/BIFMA_TRADERS-0.3.0.dev5-windows-x64-DEVELOPMENT-WINE.zip",
+      "bytes": 15777127,
+      "sha256": "98dc74675c145f7f01e95c1c69ef6a6a2fc6249d3045592cad80671334f8ef81",
+      "sidecar_and_receipt_match": true,
+      "bundle_entries_verified": 955,
+      "all_file_content_hashes_and_sizes_match_bundle_manifest": true,
+      "zip_crc_passed": true,
+      "embedded_release_manifest_matches_companion": true
+    }
+  ],
+  "input_checks": {
+    "platform_source_inventories_identical": true,
+    "platform_verification_inventories_identical": true,
+    "all_recorded_inputs_match_current_frozen_source": true,
+    "source_inputs": 41,
+    "verification_inputs": 37,
+    "application_inputs": 24,
+    "source_inventory_sha256": "fcabc4cc332b771407e3f8d8f847ae9de4c760cf6b38c7e3ea68b3999fe4eb9a"
+  },
+  "recorded_build_evidence_review": {
+    "workflow_scenario": "native-workflow-v2",
+    "workflow_schema_version": 1,
+    "frozen_workflow_evidence_copies_checked": 5,
+    "exact_ordered_steps": 17,
+    "exact_typed_effects": 32,
+    "widget_variable_lifecycle_effect_is_true": true,
+    "all_workflow_versions_frozen_success_and_cleanup_flags_valid": true,
+    "recorded_counts_and_skips_match_companion_prose": true,
+    "linux": {
+      "application_tests": 491,
+      "application_skips": 0,
+      "packaging_tests": 50,
+      "packaging_skips": 0
+    },
+    "windows_under_wine": {
+      "application_tests": 491,
+      "application_skips": 2,
+      "platform_packaging_tests": 35,
+      "platform_packaging_skips": 2,
+      "host_packaging_tests": 50,
+      "host_packaging_skips": 0
+    },
+    "qualification_scope": "Runtime/GUI/workflow execution is established by the recorded checked builds and independent Linux extraction, not rerun during this handoff audit. Native Windows target acceptance remains pending."
+  },
+  "prior_handoff_comparisons": [
+    {
+      "folder": "dist/development-0.3.0.dev3",
+      "exact_file_count": 14,
+      "manifest_entries_verified": 13,
+      "every_recorded_file_size_and_sha256_still_matches": true
+    },
+    {
+      "folder": "dist/development-0.3.0.dev4",
+      "exact_file_count": 20,
+      "manifest_entries_verified": 19,
+      "every_recorded_file_size_and_sha256_still_matches": true
+    }
+  ],
+  "findings": [],
+  "result": "approved"
+}

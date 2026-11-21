@@ -1,0 +1,250 @@
+{
+  "source_sha256": "d2cd806aa644320cf6d2eaa6192e7d6c840adcde8226f62b5ad1422980cc7e9e",
+  "source_bytes": 7299072,
+  "known_source": true,
+  "status": "structurally_decoded_not_oracle_reconciled",
+  "table_count": 30,
+  "row_count": 93110,
+  "tables": [
+    {
+      "table": "BDDTL",
+      "columns": 15,
+      "rows": 6,
+      "fields": 90,
+      "nulls": 6,
+      "scalar_round_trips": 84
+    },
+    {
+      "table": "BDMST",
+      "columns": 17,
+      "rows": 1,
+      "fields": 17,
+      "nulls": 7,
+      "scalar_round_trips": 10
+    },
+    {
+      "table": "BRDTL",
+      "columns": 15,
+      "rows": 3563,
+      "fields": 53445,
+      "nulls": 12021,
+      "scalar_round_trips": 41424
+    },
+    {
+      "table": "BRMST",
+      "columns": 18,
+      "rows": 436,
+      "fields": 7848,
+      "nulls": 2986,
+      "scalar_round_trips": 4862
+    },
+    {
+      "table": "CHART",
+      "columns": 15,
+      "rows": 703,
+      "fields": 10545,
+      "nulls": 6259,
+      "scalar_round_trips": 4286
+    },
+    {
+      "table": "CITY",
+      "columns": 3,
+      "rows": 70,
+      "fields": 210,
+      "nulls": 0,
+      "scalar_round_trips": 210
+    },
+    {
+      "table": "CMP_LOGIN_ALW",
+      "columns": 2,
+      "rows": 4,
+      "fields": 8,
+      "nulls": 0,
+      "scalar_round_trips": 8
+    },
+    {
+      "table": "CONFIG",
+      "columns": 21,
+      "rows": 2,
+      "fields": 42,
+      "nulls": 26,
+      "scalar_round_trips": 16
+    },
+    {
+      "table": "DCDTL",
+      "columns": 14,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "DCMST",
+      "columns": 11,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "ENTRY_TYPE",
+      "columns": 3,
+      "rows": 12,
+      "fields": 36,
+      "nulls": 0,
+      "scalar_round_trips": 36
+    },
+    {
+      "table": "JDTL",
+      "columns": 11,
+      "rows": 19825,
+      "fields": 218075,
+      "nulls": 31894,
+      "scalar_round_trips": 186181
+    },
+    {
+      "table": "JMST",
+      "columns": 10,
+      "rows": 1771,
+      "fields": 17710,
+      "nulls": 2915,
+      "scalar_round_trips": 14795
+    },
+    {
+      "table": "LOCATION",
+      "columns": 2,
+      "rows": 5,
+      "fields": 10,
+      "nulls": 0,
+      "scalar_round_trips": 10
+    },
+    {
+      "table": "OPEN_STOCK",
+      "columns": 14,
+      "rows": 1436,
+      "fields": 20104,
+      "nulls": 2872,
+      "scalar_round_trips": 17232
+    },
+    {
+      "table": "PDTL",
+      "columns": 16,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "PMST",
+      "columns": 19,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "PUR_ITEM",
+      "columns": 13,
+      "rows": 6207,
+      "fields": 80691,
+      "nulls": 24713,
+      "scalar_round_trips": 55978
+    },
+    {
+      "table": "PUR_ITEM_GROUP_DTL",
+      "columns": 4,
+      "rows": 43,
+      "fields": 172,
+      "nulls": 0,
+      "scalar_round_trips": 172
+    },
+    {
+      "table": "PUR_ITEM_GROUP_MST",
+      "columns": 3,
+      "rows": 1,
+      "fields": 3,
+      "nulls": 0,
+      "scalar_round_trips": 3
+    },
+    {
+      "table": "SDTL",
+      "columns": 17,
+      "rows": 55405,
+      "fields": 941885,
+      "nulls": 259968,
+      "scalar_round_trips": 681917
+    },
+    {
+      "table": "SMST",
+      "columns": 21,
+      "rows": 3413,
+      "fields": 71673,
+      "nulls": 34092,
+      "scalar_round_trips": 37581
+    },
+    {
+      "table": "STORE_LOC",
+      "columns": 4,
+      "rows": 2,
+      "fields": 8,
+      "nulls": 0,
+      "scalar_round_trips": 8
+    },
+    {
+      "table": "UM_MENU",
+      "columns": 10,
+      "rows": 46,
+      "fields": 460,
+      "nulls": 58,
+      "scalar_round_trips": 402
+    },
+    {
+      "table": "UM_MENU_TEMP",
+      "columns": 1,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "UM_USERS",
+      "columns": 8,
+      "rows": 7,
+      "fields": 56,
+      "nulls": 7,
+      "scalar_round_trips": 49
+    },
+    {
+      "table": "UM_USERS_TEMP",
+      "columns": 1,
+      "rows": 0,
+      "fields": 0,
+      "nulls": 0,
+      "scalar_round_trips": 0
+    },
+    {
+      "table": "UM_USER_RIGHTS",
+      "columns": 9,
+      "rows": 134,
+      "fields": 1206,
+      "nulls": 268,
+      "scalar_round_trips": 938
+    },
+    {
+      "table": "UOM",
+      "columns": 3,
+      "rows": 7,
+      "fields": 21,
+      "nulls": 0,
+      "scalar_round_trips": 21
+    },
+    {
+      "table": "URDU_CONFIG",
+      "columns": 2,
+      "rows": 11,
+      "fields": 22,
+      "nulls": 0,
+      "scalar_round_trips": 22
+    }
+  ]
+}
