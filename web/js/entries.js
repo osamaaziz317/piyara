@@ -29,6 +29,34 @@ const financialDescription = "Post receipts, payments, journals, transfers and o
 const inventoryDescription = "Handle sales, purchases, returns and damaged stock in one workspace.";
 let nextFieldId = 0;
 
+function formatEntryDate(value) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value ?? ""));
+  return match ? `${match[3]}/${match[2]}/${match[1]}` : "";
+}
+
+function parseEntryDate(value) {
+  const raw = String(value ?? "");
+  const shorthand = /^\d{6}$/.test(raw);
+  const match = shorthand ? null : /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(raw);
+  if (!shorthand && !match) return "";
+  const day = shorthand ? raw.slice(0, 2) : match[1];
+  const month = shorthand ? raw.slice(2, 4) : match[2];
+  const year = shorthand ? `20${raw.slice(4, 6)}` : match[3];
+  const parsed = new Date(0);
+  parsed.setUTCFullYear(Number(year), Number(month) - 1, Number(day));
+  parsed.setUTCHours(0, 0, 0, 0);
+  if (parsed.getUTCFullYear() !== Number(year) || parsed.getUTCMonth() !== Number(month) - 1 || parsed.getUTCDate() !== Number(day)) return "";
+  return `${year}-${month}-${day}`;
+}
+
+function entryDateError(value, today) {
+  if (!value) return "";
+  const parsed = parseEntryDate(value);
+  if (!parsed) return "Enter a valid date in DD/MM/YYYY format or six-digit DDMMYY format.";
+  if (parsed > today) return "Date cannot be later than today.";
+  return "";
+}
+
 function catalog(route, ui) {
   const catalogs = {
     coding: { title: "Coding", urdu: "بنیادی ریکارڈ", description: "Maintain the records used in transactions across the business.", defs: masterDefinitions, groups: masterGroups },
@@ -62,10 +90,13 @@ function catalog(route, ui) {
 
 function entryField(ui, label, name, value, { type = "text", step, min, max, required = false, wide = false, hint = "", readOnly = false } = {}) {
   const numeric = type === "number";
+  const date = type === "date";
   const hintId = hint ? `entry-hint-${++nextFieldId}` : "";
   const a11yHint = hint ? `aria-describedby="${hintId}"` : "";
-  const extra = `type="${type}" data-enter ${required ? "required" : ""} ${readOnly ? "readonly" : ""} ${a11yHint}
-    ${numeric ? `inputmode="decimal" step="${step ?? 0.01}" min="${min ?? 0}"${max != null ? ` max="${max}"` : ""}` : 'maxlength="100" dir="auto"'}`;
+  const extra = `type="${date ? "text" : type}" data-enter ${required ? "required" : ""} ${readOnly ? "readonly" : ""} ${a11yHint}
+    ${numeric ? `inputmode="decimal" step="${step ?? 0.01}" min="${min ?? 0}"${max != null ? ` max="${max}"` : ""}`
+      : date ? 'inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" autocomplete="off"'
+        : 'maxlength="100" dir="auto"'}`;
   return field(label, `${textInput(name, value, ui, extra)}${hint ? `<small id="${hintId}" class="entry-field-hint">${hint}</small>` : ""}`, { required, wide });
 }
 
@@ -342,7 +373,6 @@ function renderDocument(section, kind, ui) {
     const step = Math.pow(10, -precision);
     const form = document.createElement("form");
     form.className = "entry-posting";
-    let started = kind !== "sale" || Boolean(existing);
     const number = record.number || ui.demo.nextNumber(kind);
     const date = record.date || ui.today();
     let submitting = false;
@@ -390,11 +420,10 @@ function renderDocument(section, kind, ui) {
         <header class="entry-form-card-header">
           <div><h2>${existing ? "Edit transaction" : trade ? "Invoice details" : "Voucher details"}</h2>
             ${existing ? `<p class="muted">Editing ${ui.escape(existing.number)}</p>` : ""}</div>
-          ${!started ? button(ui, "start", "Start invoice", "arrow-right", "primary", "Enter") : ""}
         </header>
         <div class="entry-form-grid form-grid entry-document-fields">
-          ${entryField(ui, trade ? "Invoice number" : "Voucher number", "number", started ? number : "", { readOnly: true })}
-          ${entryField(ui, "Date", "date", started ? date : "", { type: "date", required: true })}
+          ${entryField(ui, trade ? "Invoice number" : "Voucher number", "number", number, { readOnly: true })}
+          ${entryField(ui, "Date", "date", formatEntryDate(date), { type: "date", required: true })}
           ${trade ? tradeHeader : journalFields(ui, kind, record, step)}
         </div>
       </section>
@@ -411,6 +440,12 @@ function renderDocument(section, kind, ui) {
     entry.replaceChildren(form);
 
     const get = name => form.elements.namedItem(name);
+    const normalizeDateInput = input => {
+      const shorthandDate = /^\d{6}$/.test(input.value) ? parseEntryDate(input.value) : "";
+      if (shorthandDate) input.value = formatEntryDate(shorthandDate);
+      input.setCustomValidity(entryDateError(input.value, ui.today()));
+    };
+    normalizeDateInput(get("date"));
     const lines = form.querySelector("[data-lines]");
     const errorLine = form.querySelector(".entry-posting-error");
     const selectLines = () => [...(lines?.children || [])];
@@ -428,18 +463,7 @@ function renderDocument(section, kind, ui) {
       control.querySelector("button").removeAttribute("aria-invalid");
     }
 
-    function start(focus = true) {
-      if (!started) {
-        started = true;
-        get("number").value = number;
-        if (!get("date").value) get("date").value = date;
-        form.querySelector('[data-action="start"]')?.remove();
-      }
-      if (focus) (form.querySelector('[data-picker="partyId"]') || get("date")).focus();
-    }
-
     function pick(control) {
-      start(false);
       const name = control.dataset.picker;
       const wrapper = control.closest("[data-lookup]");
       const input = wrapper.querySelector("input");
@@ -542,7 +566,6 @@ function renderDocument(section, kind, ui) {
     }
 
     function pickItem(control) {
-      start(false);
       const row = control.closest("tr");
       const candidates = rowsFor(ui, "items", row.dataset.itemId);
       const quantity = row.querySelector('[data-line-input="quantity"]');
@@ -580,8 +603,9 @@ function renderDocument(section, kind, ui) {
 
     function save(withPrint = false) {
       if (submitting) return;
-      start(false);
       errors(errorLine, "");
+      const dateValue = parseEntryDate(get("date").value);
+      normalizeDateInput(get("date"));
       if (!form.reportValidity()) return;
       const missing = [...form.querySelectorAll("[data-required]")].find(wrapper => !wrapper.querySelector("input").value);
       if (missing) {
@@ -592,6 +616,7 @@ function renderDocument(section, kind, ui) {
         return;
       }
       const data = Object.fromEntries(new FormData(form));
+      data.date = dateValue;
       if (existing) data.id = existing.id;
       delete data.number;
       for (const key of ["amount", "paid", "discount", "quantity", "rate", "terms"]) {
@@ -628,7 +653,6 @@ function renderDocument(section, kind, ui) {
       if (existing && get("paid")) get("paid").dataset.manual = "true";
     }
     const handlers = {
-      start: () => start(),
       add: () => newEntry(),
       "line-add": () => {
         const available = selectLines().find(row => !row.dataset.itemId);
@@ -654,11 +678,23 @@ function renderDocument(section, kind, ui) {
       else if (control.hasAttribute("data-picker")) pick(control);
       else handlers[control.dataset.action]?.(control);
     });
+    form.addEventListener("focusin", event => {
+      if (event.target.matches('[data-line-input="rate"]') || (trade && event.target.name === "date")) event.target.select();
+    });
+    form.addEventListener("click", event => {
+      if (event.target.matches('[data-line-input="rate"]') || (trade && event.target.name === "date")) event.target.select();
+    });
     form.addEventListener("input", event => {
       if (event.target.name === "paid") event.target.dataset.manual = "true";
+      if (event.target.name === "date") normalizeDateInput(event.target);
       updateTotals();
       trackDraft();
     });
+    form.addEventListener("blur", event => {
+      if (event.target.name !== "date") return;
+      normalizeDateInput(event.target);
+      trackDraft();
+    }, true);
     form.addEventListener("change", event => {
       if (event.target.name === "openingKind") {
         form.querySelector("[data-opening-fields]").innerHTML = openingFields(ui, event.target.value, {}, step);
@@ -684,7 +720,7 @@ function renderDocument(section, kind, ui) {
     editor = {
       form, save, data: () => JSON.stringify([
         [...new FormData(form)].filter(([key]) => !["date", "number", "paid"].includes(key)),
-        get("date")?.value && get("date")?.value !== date ? get("date")?.value : "",
+        get("date")?.value && get("date")?.value !== formatEntryDate(date) ? get("date")?.value : "",
         get("paid")?.dataset.manual ? get("paid").value : "", lineRows()
       ]),
       search: () => {
@@ -696,7 +732,7 @@ function renderDocument(section, kind, ui) {
     editor.original = editor.data();
     requestAnimationFrame(() => {
       if (!form.isConnected || document.querySelector("dialog[open]")) return;
-      (form.querySelector('[data-action="start"]') || get("date"))?.focus({ preventScroll: true });
+      get("date")?.focus({ preventScroll: true });
     });
   }
 

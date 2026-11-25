@@ -19,7 +19,8 @@ from urllib.parse import unquote, urlsplit
 WEB_ROOT = Path(__file__).resolve().parent / "web"
 ADDRESS = "127.0.0.1"
 DEFAULT_PORT = 8765
-WINDOW_ACTIONS = {"minimize", "maximize", "restore", "close-window"}
+DEFAULT_WINDOW_SIZE = (1440, 940)
+WINDOW_ACTIONS = {"minimize", "maximize", "restore", "close-window", "resize-login", "default-size"}
 WEB_TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8"}
 
 
@@ -48,8 +49,8 @@ def desktop_profile():
     return Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share")) / "fm-solutions" / "prototype"
 
 
-def control_windows_browser(process_id, action):
-    from ctypes import WINFUNCTYPE, byref, create_unicode_buffer, windll, wintypes
+def control_windows_browser(process_id, action, size=None):
+    from ctypes import WINFUNCTYPE, POINTER, Structure, byref, create_unicode_buffer, sizeof, windll, wintypes
 
     user32 = windll.user32
     windows = []
@@ -60,6 +61,24 @@ def control_windows_browser(process_id, action):
     user32.ShowWindowAsync.argtypes = [wintypes.HWND, wintypes.INT]
     user32.PostMessageW.argtypes = [wintypes.HWND, wintypes.UINT, wintypes.WPARAM, wintypes.LPARAM]
     user32.EnumWindows.argtypes = [enum_callback, wintypes.LPARAM]
+    user32.GetWindowRect.argtypes = [wintypes.HWND, POINTER(wintypes.RECT)]
+    user32.GetClientRect.argtypes = [wintypes.HWND, POINTER(wintypes.RECT)]
+    user32.MonitorFromWindow.argtypes = [wintypes.HWND, wintypes.DWORD]
+    user32.MonitorFromWindow.restype = wintypes.HANDLE
+
+    class MonitorInfo(Structure):
+        _fields_ = [
+            ("cbSize", wintypes.DWORD),
+            ("rcMonitor", wintypes.RECT),
+            ("rcWork", wintypes.RECT),
+            ("dwFlags", wintypes.DWORD),
+        ]
+
+    user32.GetMonitorInfoW.argtypes = [wintypes.HANDLE, POINTER(MonitorInfo)]
+    user32.SetWindowPos.argtypes = [
+        wintypes.HWND, wintypes.HWND, wintypes.INT, wintypes.INT,
+        wintypes.INT, wintypes.INT, wintypes.UINT,
+    ]
 
     @enum_callback
     def collect(window, _):
@@ -77,6 +96,35 @@ def control_windows_browser(process_id, action):
         return False
     if action == "close-window":
         return bool(user32.PostMessageW(windows[0], 0x0010, 0, 0))
+    if action in {"resize-login", "default-size"}:
+        window = windows[0]
+        if action == "default-size":
+            width, height = DEFAULT_WINDOW_SIZE
+        else:
+            width, height, viewport_width, viewport_height = size
+            outer = wintypes.RECT()
+            client = wintypes.RECT()
+            if not user32.GetWindowRect(window, byref(outer)) or not user32.GetClientRect(window, byref(client)):
+                return False
+            client_width = client.right - client.left
+            client_height = client.bottom - client.top
+            scale_x = client_width / viewport_width
+            scale_y = client_height / viewport_height
+            width = round(width * scale_x) + (outer.right - outer.left - client_width)
+            height = round(height * scale_y) + (outer.bottom - outer.top - client_height)
+            monitor = user32.MonitorFromWindow(window, 2)
+            monitor_info = MonitorInfo()
+            monitor_info.cbSize = sizeof(MonitorInfo)
+            if not monitor or not user32.GetMonitorInfoW(monitor, byref(monitor_info)):
+                return False
+            work = monitor_info.rcWork
+            x = work.left + (work.right - work.left - width) // 2
+            y = work.top + (work.bottom - work.top - height) // 2
+            flags = 0x0004 | 0x0010
+        if action == "default-size":
+            x = y = 0
+            flags = 0x0002 | 0x0004 | 0x0010
+        return bool(user32.SetWindowPos(window, None, x, y, width, height, flags))
     show_command = {"minimize": 6, "maximize": 3, "restore": 9}[action]
     return bool(user32.ShowWindowAsync(windows[0], show_command))
 
@@ -159,14 +207,32 @@ class PrototypeHandler(BaseHTTPRequestHandler):
 
         try:
             length = int(self.headers.get("Content-Length", "0"))
-            action = self.rfile.read(length).decode("ascii") if 0 < length <= 24 else ""
-        except (ValueError, UnicodeDecodeError):
+            body = self.rfile.read(length) if 0 < length <= 512 else b""
+            request = json.loads(body) if self.headers.get("Content-Type") == "application/json" else {
+                "action": body.decode("ascii")
+            }
+            action = request.get("action") if isinstance(request, dict) else ""
+        except (ValueError, UnicodeDecodeError, json.JSONDecodeError):
+            request = {}
             action = ""
         if action not in WINDOW_ACTIONS:
             self.send_error(HTTPStatus.BAD_REQUEST)
             return
 
-        if not control_windows_browser(browser.pid, action):
+        size = None
+        if action == "resize-login":
+            dimensions = [request.get(key) for key in ("width", "height", "viewportWidth", "viewportHeight")]
+            if any(type(value) is not int for value in dimensions):
+                self.send_error(HTTPStatus.BAD_REQUEST)
+                return
+            width, height, viewport_width, viewport_height = dimensions
+            if not (350 <= width <= 2000 and 250 <= height <= 1600
+                    and 350 <= viewport_width <= 10000 and 250 <= viewport_height <= 10000):
+                self.send_error(HTTPStatus.BAD_REQUEST)
+                return
+            size = dimensions
+
+        if not control_windows_browser(browser.pid, action, size):
             self.send_error(HTTPStatus.CONFLICT, "Desktop window not available")
             return
         self.send_response(HTTPStatus.NO_CONTENT)
@@ -204,7 +270,8 @@ def main():
             profile.mkdir(parents=True, exist_ok=True)
             server.browser = subprocess.Popen([
                 browser, f"--app={url}", f"--user-data-dir={profile.resolve()}",
-                "--no-first-run", "--no-default-browser-check", "--disable-background-mode", "--window-size=1440,940",
+                "--no-first-run", "--no-default-browser-check", "--disable-background-mode",
+                f"--window-size={DEFAULT_WINDOW_SIZE[0]},{DEFAULT_WINDOW_SIZE[1]}",
             ])
         except OSError as error:
             parser.exit(1, f"Could not open the FM Solutions desktop window. {error}\n")

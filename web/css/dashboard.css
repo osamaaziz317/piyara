@@ -72,7 +72,7 @@
 .position-grid dt { color: var(--muted); font-size: 11px; }
 .position-grid dd { margin: 3px 0 0; font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 700; }
 
-.login-view { min-height: 100vh; display: grid; place-items: center; padding: 21px; background: radial-gradient(ellipse at 12% 14%,#e1edff 1%,transparent 55%), radial-gradient(ellipse at 90% 94%,#e3ecfa 1%,transparent 48%),#f3f6fb; }
+.login-view { min-height: 100vh; display: grid; place-items: center; padding: 0; background: radial-gradient(ellipse at 12% 14%,#e1edff 1%,transparent 55%), radial-gradient(ellipse at 90% 94%,#e3ecfa 1%,transparent 48%),#f3f6fb; }
 .login-frame { width: min(755px,100%); display: grid; grid-template-columns: .87fr 1fr; overflow: hidden; border-radius: 17px; background: white; border: 1px solid #dae4f2; box-shadow: 0 20px 70px #1c3c701d,0 4px 16px #19366009; }
 .login-art { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; min-height: 446px; padding: 25px 24px; overflow: hidden; background: radial-gradient(ellipse at 90% 68%,#2a53a1,transparent 80%),linear-gradient(145deg,#17294a,#142642 52%,#1e4386); color: #fff; }
 .login-art::after { position: absolute; z-index: -1; inset: 70px -60px 60px -58px; content: ""; background: url("../assets/warehouse.png") center/contain no-repeat; opacity: .86; }

@@ -46,7 +46,7 @@ Use Tab and Shift+Tab to move between controls. Use Enter to advance or choose, 
 
 ## Prototype architecture
 
-- `app.py` serves the interface on the local loopback address and starts Edge or Chrome in application mode. The dedicated browser profile keeps demonstration data across launches. Windows window controls act on that app window.
+- `app.py` serves the interface on the local loopback address and starts Edge or Chrome in application mode. The dedicated browser profile keeps demonstration data across launches. The Windows app window centers around the sign-in card and maximizes after sign-in.
 - `web/js/app.js` owns navigation and session presentation. Entry, accounting, dashboard, Setup and Help views use the service in `web/js/demo.js`. The interface uses English and Urdu together, with right-to-left fields and system Urdu font fallbacks.
 - `web/js/demo-accounting.js` simulates balanced journal postings, inventory valuation and invoice allocation independently of screen rendering. The default fiscal year runs July through June. Credit receipts apply to a referenced invoice first, then to the oldest eligible open invoices. Weighted average is the default stock valuation setting.
 - Demo service records and accounts are partitioned by business in the browser profile. Keep the same profile and port to reopen the same demonstration data. Backup and restore in Setup operate on one business. The browser profile contains sample records and demo credentials. Use fictional business data and dummy credentials here.

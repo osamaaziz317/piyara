@@ -90,8 +90,8 @@ export function date(value, options = {}) {
   if (!value) return '—';
   const valueDate = value instanceof Date ? value : new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00+05:00` : value);
   if (Number.isNaN(valueDate.valueOf())) return '—';
-  return new Intl.DateTimeFormat('en-PK', {
-    timeZone: 'Asia/Karachi', day: 'numeric', month: 'short', year: 'numeric', ...options
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Karachi', day: '2-digit', month: '2-digit', year: 'numeric', ...options
   }).format(valueDate);
 }
 

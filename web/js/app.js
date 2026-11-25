@@ -47,6 +47,10 @@ const pkClock = new Intl.DateTimeFormat('en-PK', {
 let current = '';
 let shell = null;
 let activePopup = null;
+let loginAutoSizer = null;
+let loginResizeFrame = 0;
+let lastLoginWindowSize = '';
+let desktopResizeQueue = Promise.resolve();
 
 function groupId(route) {
   return route.split('.')[0];
@@ -81,7 +85,30 @@ function remember(key, value) {
   return value;
 }
 
+function stopLoginAutoSizer() {
+  loginAutoSizer?.disconnect();
+  loginAutoSizer = null;
+  if (loginResizeFrame) cancelAnimationFrame(loginResizeFrame);
+  loginResizeFrame = 0;
+  lastLoginWindowSize = '';
+}
+
+function resizeDesktopWindow(request) {
+  if (!desktop.windowToken) return Promise.resolve();
+  const operation = desktopResizeQueue.catch(() => {}).then(async () => {
+    const response = await fetch('/window', {
+      method: 'POST',
+      headers: {'X-FM-Desktop': desktop.windowToken, 'Content-Type': 'application/json'},
+      body: JSON.stringify(request)
+    });
+    if (!response.ok) throw new Error(`Could not resize the application window (${response.status}).`);
+  });
+  desktopResizeQueue = operation;
+  return operation;
+}
+
 function clearWorkspace() {
+  stopLoginAutoSizer();
   document.querySelectorAll('dialog[open]').forEach(dialog => dialog.close());
   shell = null;
   activePopup = null;
@@ -119,6 +146,28 @@ function renderLogin() {
       </section>
     </div>`);
   app.replaceChildren(formView);
+  const loginFrame = formView.querySelector('.login-frame');
+  const resizeLoginWindow = () => {
+    loginResizeFrame = 0;
+    const size = `${loginFrame.offsetWidth}x${loginFrame.offsetHeight}`;
+    if (size === lastLoginWindowSize) return;
+    lastLoginWindowSize = size;
+    resizeDesktopWindow({
+      action: 'resize-login',
+      width: loginFrame.offsetWidth,
+      height: loginFrame.offsetHeight,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight
+    }).catch(failure => {
+      console.error(failure);
+      toast(failure.message, 'error');
+    });
+  };
+  loginAutoSizer = new ResizeObserver(() => {
+    if (!loginResizeFrame) loginResizeFrame = requestAnimationFrame(resizeLoginWindow);
+  });
+  loginAutoSizer.observe(loginFrame);
+  loginResizeFrame = requestAnimationFrame(resizeLoginWindow);
   const form = formView.querySelector('form');
   const {username, password, business, remember: saveName} = form.elements;
   if (clients.some(client => client.id === remember('business'))) business.value = remember('business');
@@ -163,7 +212,16 @@ function renderLogin() {
       await demo.signIn(business.value, username.value, password.value);
       remember('username', saveName.checked ? username.value : '');
       remember('business', saveName.checked ? business.value : '');
+      stopLoginAutoSizer();
+      await desktopResizeQueue.catch(() => {});
+      let resizeFailure = null;
+      try {
+        await resizeDesktopWindow({action: 'maximize'});
+      } catch (failure) {
+        resizeFailure = failure;
+      }
       renderShell();
+      if (resizeFailure) toast(resizeFailure.message, 'error');
     } catch (failure) {
       error.textContent = failure.message;
       error.hidden = false;

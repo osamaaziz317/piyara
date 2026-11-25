@@ -394,9 +394,10 @@ function renderUsers(ui) {
 function activityTime(ui, timestamp) {
   const date = new Date(timestamp);
   if (Number.isNaN(date.getTime())) return ui.escape(timestamp || '—');
-  return ui.escape(new Intl.DateTimeFormat('en-PK', {
-    timeZone: 'Asia/Karachi', dateStyle: 'medium', timeStyle: 'medium',
-  }).format(date));
+  const time = new Intl.DateTimeFormat('en-PK', {
+    timeZone: 'Asia/Karachi', timeStyle: 'medium',
+  }).format(date);
+  return ui.escape(`${ui.date(date)} ${time}`);
 }
 
 function showAudit(ui, row) {
