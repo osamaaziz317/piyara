@@ -62,7 +62,7 @@ function controlsFor(ui, kind, record = {}) {
     value, number: true, extra: `type="number" min="0" step="${step}" inputmode="decimal"`
   });
   const quantity = (label, name) => input(label, name, {
-    value: 0, number: true, extra: 'type="number" min="0" step="0.0001" inputmode="decimal"'
+    value: 0, number: true, extra: 'type="number" min="0" step="1" inputmode="numeric"'
   });
 
   const name = input("English name", "name", { extra: 'maxlength="100" dir="auto"', required: true });
@@ -103,8 +103,8 @@ function controlsFor(ui, kind, record = {}) {
       name, nameUrdu,
       select("Category", "category", lookup(ui, "categories", record.category), { required: true }),
       select("Unit", "unit", lookup(ui, "units", record.unit), { required: true }),
-      input("Purchase price", "purchasePrice", { value: 0, number: true, extra: 'type="number" min="0" step="0.0001" inputmode="decimal"' }),
-      input("Sale price", "salePrice", { value: 0, number: true, extra: 'type="number" min="0" step="0.0001" inputmode="decimal"' }),
+      input("Purchase price", "purchasePrice", { value: 0, number: true, extra: 'type="number" min="0" step="1" inputmode="numeric"' }),
+      input("Sale price", "salePrice", { value: 0, number: true, extra: 'type="number" min="0" step="1" inputmode="numeric"' }),
       quantity("Opening stock", "openingStock"), quantity("Minimum stock level", "minimumStock"),
       input("Barcode (optional)", "barcode", { extra: 'maxlength="60"' }), status,
       notes("Description", "description")

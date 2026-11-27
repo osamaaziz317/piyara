@@ -88,13 +88,13 @@ function catalog(route, ui) {
   return page;
 }
 
-function entryField(ui, label, name, value, { type = "text", step, min, max, required = false, wide = false, hint = "", readOnly = false } = {}) {
+function entryField(ui, label, name, value, { type = "text", step, min, max, required = false, wide = false, hint = "", readOnly = false, inputmode } = {}) {
   const numeric = type === "number";
   const date = type === "date";
   const hintId = hint ? `entry-hint-${++nextFieldId}` : "";
   const a11yHint = hint ? `aria-describedby="${hintId}"` : "";
   const extra = `type="${date ? "text" : type}" data-enter ${required ? "required" : ""} ${readOnly ? "readonly" : ""} ${a11yHint}
-    ${numeric ? `inputmode="decimal" step="${step ?? 0.01}" min="${min ?? 0}"${max != null ? ` max="${max}"` : ""}`
+    ${numeric ? `inputmode="${inputmode ?? "decimal"}" step="${step ?? 0.01}" min="${min ?? 0}"${max != null ? ` max="${max}"` : ""}`
       : date ? 'inputmode="numeric" maxlength="10" placeholder="dd/mm/yyyy" autocomplete="off"'
         : 'maxlength="100" dir="auto"'}`;
   return field(label, `${textInput(name, value, ui, extra)}${hint ? `<small id="${hintId}" class="entry-field-hint">${hint}</small>` : ""}`, { required, wide });
@@ -136,8 +136,8 @@ function openingFields(ui, type, record, step) {
     return [
       lookupControl(ui, "Item", "itemId", record.itemId, rowsFor(ui, "items", record.itemId), { required: true }),
       lookupControl(ui, "Warehouse", "warehouseId", record.warehouseId, rowsFor(ui, "warehouses", record.warehouseId), { required: true }),
-      entryField(ui, "Opening quantity", "quantity", record.quantity ?? "", { type: "number", step: 0.0001, min: 0.0001, required: true }),
-      entryField(ui, "Opening rate", "rate", record.rate ?? "", { type: "number", step: 0.0001, required: true })
+      entryField(ui, "Opening quantity", "quantity", record.quantity ?? "", { type: "number", step: 1, min: 1, required: true, inputmode: "numeric" }),
+      entryField(ui, "Opening rate", "rate", record.rate ?? "", { type: "number", step: 1, required: true, inputmode: "numeric" })
     ].join("");
   }
   return [
@@ -546,11 +546,11 @@ function renderDocument(section, kind, ui) {
       row.dataset.itemId = line.itemId || "";
       const label = item ? bilingual(item, ui) : '<span class="muted">Search items</span>';
       const valueInput = (key, placeholder, step, min = 0, max, required = false) => `
-        <input type="number" inputmode="decimal" data-enter data-line-input="${key}" aria-label="${placeholder}" min="${min}" step="${step}" ${max != null ? `max="${max}"` : ""} ${required ? "required" : ""} ${selected ? "" : "disabled"}
+        <input type="number" inputmode="${["quantity", "rate"].includes(key) ? "numeric" : "decimal"}" data-enter data-line-input="${key}" aria-label="${placeholder}" min="${min}" step="${step}" ${max != null ? `max="${max}"` : ""} ${required ? "required" : ""} ${selected ? "" : "disabled"}
           value="${ui.escape(line[key] ?? "")}" placeholder="${placeholder === "Quantity" ? "0" : "0.00"}">`;
       row.innerHTML = `<td><button type="button" class="entry-select" data-enter data-line-item aria-label="Select item" aria-haspopup="dialog"><span data-selection>${label}</span>${icon(ui, "search", 16)}</button></td>
-        <td>${valueInput("quantity", "Quantity", 0.0001, 0.0001, null, true)}</td>
-        <td>${valueInput("rate", "Rate", 0.0001, 0, null, true)}</td>
+        <td>${valueInput("quantity", "Quantity", 1, 1, null, true)}</td>
+        <td>${valueInput("rate", "Rate", 1, 0, null, true)}</td>
         ${trade.damaged ? "" : `<td>${valueInput("discount", "Line discount", step)}</td><td>${valueInput("tax", "Tax percent", 0.0001, 0, 100)}</td>`}
         <td class="entry-line-amount" data-line-total>—</td>
         <td><button type="button" class="btn btn-ghost btn-icon" data-action="line-remove" aria-label="Remove item line" ${selected ? "" : "disabled"}>${icon(ui, "x", 16)}</button></td>`;
