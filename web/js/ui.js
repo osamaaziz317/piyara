@@ -62,6 +62,8 @@ const shapes = {
   layers: '<path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/>'
 };
 const aliases = {'layout-dashboard':'dashboard','bar-chart':'chart-column','chart':'chart-column','bank':'building','building-2':'building','check-circle':'check','alert-triangle':'alert','circle-help':'help-circle','pencil':'edit','trash-2':'trash','file':'file-text','printer-check':'printer','rotate-ccw':'history','box':'package','user-plus':'users','shield-check':'shield','circle-dollar-sign':'coins','credit-card':'wallet','map-pin':'globe','arrow-up':'trending-up','upload':'download','external-link':'arrow-up-right'};
+let soundContext;
+let lastErrorSound = -Infinity;
 
 export function icon(name, size = 20) {
   const shape = shapes[name] ?? shapes[aliases[name]] ?? shapes['file-text'];
@@ -95,6 +97,45 @@ export function date(value, options = {}) {
   }).format(valueDate);
 }
 
+export function feedbackSound(kind) {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) {
+    console.warn('Audio feedback is not supported by this browser.');
+    return;
+  }
+  if (kind === 'error') {
+    const now = performance.now();
+    if (now - lastErrorSound < 250) return;
+    lastErrorSound = now;
+  }
+  try {
+    soundContext ??= new AudioContext();
+    if (soundContext.state === 'suspended') {
+      soundContext.resume().catch(error => console.error('Could not enable audio feedback.', error));
+    }
+    const time = soundContext.currentTime;
+    const notes = kind === 'error'
+      ? [{frequency: 740, offset: 0}, {frequency: 520, offset: 0.13}]
+      : [{frequency: 523, offset: 0}, {frequency: 659, offset: 0.1}, {frequency: 784, offset: 0.2}];
+    for (const {frequency, offset} of notes) {
+      const start = time + offset;
+      const oscillator = soundContext.createOscillator();
+      const gain = soundContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(frequency, start);
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.055, start + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.16);
+      oscillator.connect(gain);
+      gain.connect(soundContext.destination);
+      oscillator.start(start);
+      oscillator.stop(start + 0.17);
+    }
+  } catch (error) {
+    console.error('Could not play audio feedback.', error);
+  }
+}
+
 export function element(tag, className, html = '') {
   const node = document.createElement(tag);
   node.className = className;
@@ -107,6 +148,8 @@ export function mark() {
 }
 
 export function toast(message, level = 'success') {
+  if (level === 'error') feedbackSound('error');
+  else if (level === 'success') feedbackSound('success');
   const node = element('div', `toast toast-${level}`, `${icon(level === 'success' ? 'check' : 'alert-circle', 18)}<span>${escape(message)}</span><button type="button" aria-label="Dismiss notification">${icon('x', 16)}</button>`);
   node.querySelector('button').onclick = () => node.remove();
   document.getElementById('toasts').append(node);

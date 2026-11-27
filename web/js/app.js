@@ -1,5 +1,5 @@
 import {demo, MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH} from './demo.js';
-import {date, money, today, escape, element, icon, mark, modal, confirm, toast} from './ui.js';
+import {date, money, today, escape, element, icon, mark, modal, confirm, toast, feedbackSound} from './ui.js';
 import {documentRoute, renderDashboard, typeLabel} from './dashboard.js';
 import {renderEntries} from './entries.js';
 import {renderSecondary} from './secondary.js';
@@ -44,6 +44,7 @@ const expanded = new Set();
 const pkClock = new Intl.DateTimeFormat('en-PK', {
   timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
 });
+document.addEventListener('invalid', () => feedbackSound('error'), true);
 let current = '';
 let shell = null;
 let activePopup = null;

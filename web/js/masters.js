@@ -331,10 +331,16 @@ export function renderMaster(kind, ui) {
       print: () => print(record),
       save
     };
-    content.addEventListener("click", event => actions[event.target.closest("[data-action]")?.dataset.action]?.());
+    content.addEventListener("click", event => {
+      if (!view && event.target.matches('input[type="number"]')) event.target.select();
+      actions[event.target.closest("[data-action]")?.dataset.action]?.();
+    });
     if (!view) {
       content.addEventListener("submit", event => { event.preventDefault(); save(); });
       content.addEventListener("keydown", event => enterAdvance(event, content, save));
+      content.addEventListener("focusin", event => {
+        if (event.target.matches('input[type="number"]')) event.target.select();
+      });
       content.addEventListener("input", () => ui.setDirty?.(original !== values()));
       modal.dialog.addEventListener("cancel", event => {
         event.preventDefault();
